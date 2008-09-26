@@ -49,6 +49,7 @@
     <properties>
         <extension.name>javax.ejb</extension.name>
         <spec.version>3.1</spec.version>
+        <javax.xml.rpc.version>1.1</javax.xml.rpc.version>
     </properties>
     <name>${extension.name} API v.${spec.version}</name>
     <description>Project GlassFish Enterprise JavaBean API</description>
@@ -56,19 +57,46 @@
     <build>
         <plugins>
             <plugin>
-                <!-- Need special configuration here as the package names
-                     are not same as the default value set in parent POM
-                -->
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <configuration>
                     <instructions>
+                        <Embed-Dependency>
+                            javax.xml.rpc;inline=javax/xml/rpc/handler/*.class
+                        </Embed-Dependency>
+
+                        <!-- Need special configuration here as the package names
+                             are not same as the default value set in parent POM
+                        -->
                         <Export-Package>
                             ${extension.name}.*; version=${spec.version},
-                            javax.interceptor.*; version=${spec.version}
+                            javax.interceptor.*; version=${spec.version},
+                            javax.xml.rpc.handler; version=${javax.xml.rpc.version}
                         </Export-Package>
+
+                        <!-- !* matches with nothing, so no other class will be included in this bundle,
+                         other than what is specified above -->
+                        <Private-Package>!*</Private-Package>
                     </instructions>
+
+                    <!-- Maven uses the output directory (target/classes)
+                    rather than the final bundle, when compiling against
+                    projects in the same reactor (ie. the same build).
+                    Since this jar comprises of classes that come from
+                    some other jar and other modules depend on this
+                    artifact, we need to unpack.
+                    -->
+                    <unpackBundle>true</unpackBundle>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>osgi-bundle</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -94,6 +122,7 @@
             <groupId>org.glassfish</groupId>
             <artifactId>javax.xml.rpc</artifactId>
             <version>${project.version}</version>
+            <optional>true</optional>
 	</dependency>
     </dependencies>
 </project>
