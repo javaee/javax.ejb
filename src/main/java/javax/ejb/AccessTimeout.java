@@ -27,6 +27,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Specifies the amount of time(in milliseconds) that a concurrent 
@@ -38,6 +39,7 @@ import static java.lang.annotation.RetentionPolicy.*;
 @Retention(RUNTIME)
 public @interface AccessTimeout {
 
-    int value();
+    long value() default 0;
+    TimeUnit unit() default TimeUnit.MILLISECONDS;
 
 }
