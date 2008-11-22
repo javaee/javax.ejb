@@ -139,4 +139,38 @@ public interface Timer {
      */
     public TimerHandle getHandle() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.EJBException;
 
+    /**
+     * Get the schedule expression corresponding to this timer.
+     *
+     * @exception java.lang.IllegalStateException If this method is
+     * invoked while the instance is in a state that does not allow access
+     * to this method.  Also thrown if invoked on a timer that was created
+     * with one of the non-ScheduleExpression TimerService.createTimer APIs.
+     *
+     * @exception javax.ejb.NoSuchObjectLocalException If invoked on a timer
+     * that has expired or has been cancelled.
+     *
+     * @exception javax.ejb.EJBException If this method could not complete due
+     * to a system-level failure.
+     */
+    public ScheduleExpression getSchedule() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.EJBException;
+
+    /**
+     * Query whether this timer has persistent semantics.
+     *
+     * @exception java.lang.IllegalStateException If this method is
+     * invoked while the instance is in a state that does not allow access
+     * to this method.
+     *
+     * @return true if this timer has persistent guarantees.
+     * @return false if this is a non-persistent timer.
+     *
+     * @exception javax.ejb.NoSuchObjectLocalException If invoked on a timer
+     * that has expired or has been cancelled.
+     *
+     * @exception javax.ejb.EJBException If this method could not complete due
+     * to a system-level failure.
+     */
+    public boolean isPersistent() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.EJBException;
+
 } 
