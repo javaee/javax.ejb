@@ -42,10 +42,7 @@ package javax.ejb;
  * failed to open a database connection).
  */
 public class EJBException extends java.lang.RuntimeException {
-    /**
-     * @serial
-     */
-    private Exception causeException = null;
+    
 
     /**
      * Constructs an EJBException with no detail message.
@@ -65,8 +62,7 @@ public class EJBException extends java.lang.RuntimeException {
      * Constructs an EJBException that embeds the originally thrown exception.
      */  
     public EJBException(Exception  ex) {
-        super();
-	causeException = ex;
+        super(ex);
     }
 
     /**
@@ -74,79 +70,19 @@ public class EJBException extends java.lang.RuntimeException {
      * with the specified detail message. 
      */  
     public EJBException(String message, Exception  ex) {
-        super(message);
-	causeException = ex;
+        super(message, ex);
     }
 
 
     /**
-     * Obtain the exception that caused the EJBException being thrown.
+     * Obtain the exception that caused the EJBException to be thrown.
+     * It is recommended that the inherited Throwable.getCause() method
+     * be used to retrieve the cause instead of this method.  This
+     * method can only be used to retrieve a java.lang.Exception that
+     * was set via the constructor.  
      */
     public Exception getCausedByException() {
-	return causeException;
+	    return (Exception) getCause();
     }
 
-    /**
-     * Returns the detail message, including the message from the nested
-     * exception if there is one.
-     */
-    public String getMessage() {
-	String msg = super.getMessage();
-        if (causeException == null)
-            return msg;
-        else if ( msg == null ) {
-            return "nested exception is: " + causeException.toString();
-	}
-	else {
-            return msg + "; nested exception is: " + causeException.toString();
-	}
-    }
-
-    /**
-     * Prints the composite message and the embedded stack trace to
-     * the specified stream <code>ps</code>.
-     * @param ps the print stream
-     */
-    public void printStackTrace(java.io.PrintStream ps)
-    {
-        if (causeException == null) {
-            super.printStackTrace(ps);
-        } else {
-            synchronized(ps) {
-		ps.println(this);
-		// Print the cause exception first, so that the output
-		// appears in stack order (i.e. innermost exception first)
-                causeException.printStackTrace(ps);
-                super.printStackTrace(ps);
-            }
-        }
-    }
-
-    /** 
-     * Prints the composite message to <code>System.err</code>.
-     */ 
-    public void printStackTrace()
-    {
-        printStackTrace(System.err);
-    }
-
-    /**
-     * Prints the composite message and the embedded stack trace to
-     * the specified print writer <code>pw</code>.
-     * @param pw the print writer
-     */
-    public void printStackTrace(java.io.PrintWriter pw)
-    {
-        if (causeException == null) {
-            super.printStackTrace(pw);
-        } else {
-            synchronized(pw) {
-		pw.println(this);
-		// Print the cause exception first, so that the output
-		// appears in stack order (i.e. innermost exception first)
-                causeException.printStackTrace(pw);
-		super.printStackTrace(pw);
-            }
-        }
-    }
 }
