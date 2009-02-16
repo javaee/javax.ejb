@@ -132,6 +132,15 @@ public final class ScheduleExpression implements Serializable {
         return year_;
     }
 
+    public ScheduleExpression timezone(String timezoneID) {
+        timezoneID_ = timezoneID;
+        return this;
+    }
+
+    public String getTimezone() {
+        return timezoneID_;
+    }
+
     public ScheduleExpression start(Date s) {
         start_ = (s == null) ? null : new Date(s.getTime());
 
@@ -152,6 +161,9 @@ public final class ScheduleExpression implements Serializable {
         return (end_ == null) ? null : new Date(end_.getTime());
     }
 
+    public String toString() {
+	return "";
+    }
 
     private String second_ = "0";
     private String minute_ = "0";
@@ -161,6 +173,8 @@ public final class ScheduleExpression implements Serializable {
     private String month_ = "*";
     private String dayOfWeek_ = "*";
     private String year_ = "*";
+
+    private String timezoneID_ = null;
 
     private Date start_ = null;
 

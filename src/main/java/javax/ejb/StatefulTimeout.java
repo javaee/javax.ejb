@@ -20,38 +20,29 @@
  * 
  * Copyright 2006 Sun Microsystems, Inc. All rights reserved.
  */
+
 package javax.ejb;
 
-import java.io.Serializable;
+import java.lang.annotation.Target;
+import static java.lang.annotation.ElementType.*;
+import java.lang.annotation.Retention;
+import static java.lang.annotation.RetentionPolicy.*;
 
-public class TimerConfig {
+import java.util.concurrent.TimeUnit;
 
-    public TimerConfig() {}
+/**
+ * Specifies the amount of time a stateful session bean can
+ * be idle ( not receive any client invocations ) before it
+ * is eligible for removal by the container.
+ * 
+ */
 
-    public TimerConfig(Serializable info, boolean persistent) {
-	info_ = info;
-  	persistent_ = persistent;
-    }
+@Target(TYPE) 
+@Retention(RUNTIME)
+public @interface StatefulTimeout {
 
-    public void setInfo(Serializable i) {
-	info_ = i;
-    }
+    long value();
 
-    public Serializable getInfo() {
-	return info_;
-    }
-
-    public void setPersistent(boolean p) {
-	persistent_ = p;
-    }
-
-    public boolean isPersistent() {
-	return persistent_;
-    }
-
-    private Serializable info_ = null;
-
-    private boolean persistent_ = true;
+    TimeUnit unit() default TimeUnit.MINUTES;
 
 }
-

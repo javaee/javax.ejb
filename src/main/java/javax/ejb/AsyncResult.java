@@ -35,7 +35,7 @@ import java.util.concurrent.*;
   * and made available to the client.
   */
 
-public final class AsyncResult<V> implements Future<V>, Serializable {
+public final class AsyncResult<V> implements Future<V> {
 
     private final V resultValue;
 

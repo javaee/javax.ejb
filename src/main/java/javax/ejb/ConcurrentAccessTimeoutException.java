@@ -24,9 +24,9 @@ package javax.ejb;
 
 /**
  * This exception indicates that an attempt to concurrently access
- * a method of a Singleton resulted in a timeout.
+ * a bean method resulted in a timeout.
  */
-public class ConcurrentAccessTimeoutException extends EJBException {
+public class ConcurrentAccessTimeoutException extends ConcurrentAccessException {
 
     public ConcurrentAccessTimeoutException() {}
 

@@ -53,6 +53,8 @@ public @interface Schedule {
 
     String year() default "*";
 
+    String timezone() default "";
+
     String info() default "";
 
     boolean persistent() default true;

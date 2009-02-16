@@ -22,36 +22,16 @@
  */
 package javax.ejb;
 
-import java.io.Serializable;
+/**
+ * This exception indicates that a calendar-based timer will not
+ * result in any more timeouts.
+ */
+public class NoMoreTimeoutsException extends EJBException {
 
-public class TimerConfig {
+    public NoMoreTimeoutsException() {}
 
-    public TimerConfig() {}
-
-    public TimerConfig(Serializable info, boolean persistent) {
-	info_ = info;
-  	persistent_ = persistent;
+    public NoMoreTimeoutsException(String message) {
+        super(message);
     }
-
-    public void setInfo(Serializable i) {
-	info_ = i;
-    }
-
-    public Serializable getInfo() {
-	return info_;
-    }
-
-    public void setPersistent(boolean p) {
-	persistent_ = p;
-    }
-
-    public boolean isPersistent() {
-	return persistent_;
-    }
-
-    private Serializable info_ = null;
-
-    private boolean persistent_ = true;
 
 }
-

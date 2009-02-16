@@ -23,14 +23,16 @@
 package javax.ejb;
 
 /**
- * A Singleton bean's concurrency management type.  
+ * Concurrency management type.  
  *
  * CONTAINER : Container managed concurrency
  * BEAN      : Bean managed concurrency
+ * CONCURRENCY_NOT_ALLOWED : Concurrency not allowed
  *
  */
 public enum ConcurrencyManagementType {
     CONTAINER,
-    BEAN
+    BEAN,
+    CONCURRENCY_NOT_ALLOWED
 }
 

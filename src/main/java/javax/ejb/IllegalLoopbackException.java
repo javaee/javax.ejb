@@ -22,36 +22,18 @@
  */
 package javax.ejb;
 
-import java.io.Serializable;
+/**
+ * This exception indicates that an attempt was made to perform an
+ * illegal loopback invocation on a Singleton with container-managed
+ * concurrency.   One possible cause is a loopback call to a WRITE method 
+ * where the current thread does not already hold a WRITE lock.
+ */
+public class IllegalLoopbackException extends ConcurrentAccessException {
 
-public class TimerConfig {
+    public IllegalLoopbackException() {}
 
-    public TimerConfig() {}
-
-    public TimerConfig(Serializable info, boolean persistent) {
-	info_ = info;
-  	persistent_ = persistent;
+    public IllegalLoopbackException(String message) {
+        super(message);
     }
-
-    public void setInfo(Serializable i) {
-	info_ = i;
-    }
-
-    public Serializable getInfo() {
-	return info_;
-    }
-
-    public void setPersistent(boolean p) {
-	persistent_ = p;
-    }
-
-    public boolean isPersistent() {
-	return persistent_;
-    }
-
-    private Serializable info_ = null;
-
-    private boolean persistent_ = true;
 
 }
-

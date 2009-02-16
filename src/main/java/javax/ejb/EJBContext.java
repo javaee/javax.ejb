@@ -196,9 +196,19 @@ public interface EJBContext
     TimerService getTimerService() throws IllegalStateException;
 
     /**
-     * Lookup a resource within the component's private naming context.
-     * 
-     * @param name Name of the entry (relative to java:comp/env).
+     * Lookup a resource within the java: namespace.  Names referring to
+     * entries within the private component namespace can be passed as
+     * unqualified strings.  In that case the lookup will be relative to
+     * "java:comp/env/".
+     *
+     * For example, assuming an enterprise bean defines an ejb-local-ref
+     * with ejb-ref-name "ejb/BarRef" the following two calls to
+     * EJBContext.lookup are equivalent :
+     *
+     *  ejbContext.lookup("ejb/BarRef");
+     *  ejbContext.lookup("java:comp/env/ejb/BarRef");
+     *
+     * @param name Name of the entry 
      *
      * @exception IllegalArgumentException The Container throws the exception
      *    if the given name does not match an entry within the component's

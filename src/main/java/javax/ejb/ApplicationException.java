@@ -56,4 +56,11 @@ public @interface ApplicationException {
      */
     boolean rollback() default false;
 
+    /**
+     * Indicates whether the application exception designation should
+     * apply to subclasses of the annotated exception class.
+     */
+    boolean inherited() default true;
+
+
 }

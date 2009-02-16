@@ -40,9 +40,23 @@ public abstract class EJBContainer {
 
     /**
      * Standard property name for specifying the set of modules to be initialized.  Property
-     * value is either a single module name String or a List<String> containing module names.
+     * value is one of the following : 
+     *   -- a single module name String from the JVM classpath
+     *   -- a String[] array of module names from the JVM classpath
+     *   -- a java.io.File representing an ejb-jar or exploded ejb-jar directory
+     *   -- a java.io.File array, each element of which represents an ejb-jar 
+     *        or exploded ejb-jar directory
      */
     public static final String EMBEDDABLE_MODULES_PROPERTY = "javax.ejb.embeddable.modules";
+
+    /**
+     * Standard property name for specifying the application name of the EJB modules 
+     * executing within the embeddable container. If specified, the property value 
+     * applies to the <app-name> portion of the portable global JNDI name syntax. If 
+     * this property is not specified, the <app-name> portion of the portable global 
+     * JNDI name syntax does not apply.
+     */
+    public static final String EMBEDDABLE_APP_NAME_PROPERTY = "javax.ejb.embeddable.appName";
 
     /**
      * Create and initialize an embeddable EJB container.  JVM classpath is 
@@ -72,19 +86,7 @@ public abstract class EJBContainer {
     public static EJBContainer createEJBContainer(Map<?,?> properties) {
 	return null;
     }
-
-   /**
-    * Retrieve the last EJBContainer instance to be successfully returned from
-    * an invocation to a createEJBContainer method.  
-    *
-    * @return EJBContainer instance,  or null if none exists or if the last 
-    * EJBContainer instance has been closed.
-    * 
-    */  
-    public static EJBContainer getCurrentEJBContainer() {
-        return null;
-    }
-   
+  
     /**
      * Retrieve a naming context for looking up references to session beans
      * executing in the embeddable container.
