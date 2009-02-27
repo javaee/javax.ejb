@@ -22,10 +22,16 @@
  */
 package javax.ejb;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.ServiceLoader;
 
 import javax.naming.Context;
+import javax.ejb.spi.EJBContainerProvider;
 
 /** 
   * Used to execute an EJB application in an embeddable container.  
@@ -64,11 +70,11 @@ public abstract class EJBContainer {
      *
      * @return EJBContainer instance
      *
-     * @exception java.lang.EJBException  Thrown if the container or application
+     * @exception javax.ejb.EJBException  Thrown if the container or application
      * could not be successfully initialized.
      */
     public static EJBContainer createEJBContainer() { 
-	return null;
+        return createEJBContainer(null);
     }
 
     /**
@@ -80,13 +86,39 @@ public abstract class EJBContainer {
      *
      * @return EJBContainer instance
      *
-     * @exception java.lang.EJBException  Thrown if the container or application
+     * @exception javax.ejb.EJBException  Thrown if the container or application
      * could not be successfully initialized.
      */
     public static EJBContainer createEJBContainer(Map<?,?> properties) {
-	return null;
+        EJBContainer container = null;
+
+        Map<String, String> errors = new HashMap<String, String>();
+        Set<String> returnedNull = new HashSet<String>();
+
+        providers.reload();
+        for (EJBContainerProvider provider : providers) {
+            try {
+                container = provider.createEJBContainer(properties);
+                if (container != null) {
+                    break;
+                } else {
+                    returnedNull.add(provider.getClass().getName());
+                }
+            } catch (Throwable t) {
+                // ignore but remember the message in case all fail: 
+                // according to Spec the provider must return null from
+                // createEJBContainer(), if not the right provider.
+                // But non-compliant provider may throw exception
+                errors.put(provider.getClass().getName(), createErrorMessage(t));
+            }
+        }
+
+        if (container == null) {
+            reportError(properties, errors, returnedNull);
+        }
+        return container;
     }
-  
+
     /**
      * Retrieve a naming context for looking up references to session beans
      * executing in the embeddable container.
@@ -99,7 +131,62 @@ public abstract class EJBContainer {
      * Shutdown an embeddable EJBContainer instance.
      */
     abstract public void close(); 
-	
+
+    //Private variables
+    private static final String newLine = "\r\n";
+    private static final ServiceLoader<EJBContainerProvider> providers = 
+            ServiceLoader.load(EJBContainerProvider.class);
+
+    /**
+     * Create a meaningful EJBException in case no EJBContainer provider had
+     * been found.
+     *
+     * @param properties the properties passed as an argument to createEJBContainer() method
+     * @param errors the Map of errors encountered during createEJBContainer() call
+     * @param returnedNull the Set of providers that returned null on createEJBContainer() call
+     * @throws EJBException
+     */
+    private static void reportError(Map<?,?> properties, Map<String, String> errors, 
+            Set<String> returnedNull) throws EJBException {
+        StringBuffer message = new StringBuffer(
+                "No EJBContainer provider available");
+
+        if (properties != null) {
+            Object specifiedProvider = properties.get(EMBEDDABLE_INITIAL_PROPERTY);
+            if (specifiedProvider != null) {
+                message.append(" for requested provider: " + specifiedProvider);
+            }
+        }
+
+        if (errors.isEmpty() && returnedNull.isEmpty()) {
+            message.append(": no provider names had been found.");
+        } else {
+            message.append("\n");
+        }
+
+        for (Map.Entry me: errors.entrySet()) {
+            message.append("Provider named ");
+            message.append(me.getKey());
+            message.append(" threw unexpected exception at create EJBContainer: \n");
+            message.append(me.getValue()).append("\n");
+        }
+        if (!returnedNull.isEmpty()) {
+            message.append("The following providers:\n");
+            for (String n: returnedNull) {
+                message.append(n).append("\n");
+            }
+            message.append("Returned null from createEJBContainer call.\n");
+        }
+        throw new EJBException(message.toString());
+    }
+
+    private static String createErrorMessage(Throwable t) {
+        StringWriter errorMessage = new StringWriter();
+        errorMessage.append(t.getClass().getName()).append(newLine);
+        t.printStackTrace(new PrintWriter(errorMessage));
+        errorMessage.append(newLine);
+        return errorMessage.toString();
+    }
 
 }
 
