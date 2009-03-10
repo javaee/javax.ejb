@@ -49,6 +49,10 @@ public class TimerConfig {
 	return persistent_;
     }
 
+    public String toString() {
+        return "TimerConfig [persistent=" + persistent_ + ";info=" + info_ + "]";
+    }
+
     private Serializable info_ = null;
 
     private boolean persistent_ = true;

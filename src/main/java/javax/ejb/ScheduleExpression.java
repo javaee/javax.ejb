@@ -162,7 +162,17 @@ public final class ScheduleExpression implements Serializable {
     }
 
     public String toString() {
-	return "";
+	return "ScheduleExpression [second=" + second_ 
+                + ";minute=" + minute_ 
+                + ";hour=" + hour_ 
+                + ";dayOfMonth=" + dayOfMonth_
+                + ";month=" + month_
+                + ";dayOfWeek=" + dayOfWeek_
+                + ";year=" + year_
+                + ";timezoneID=" + timezoneID_
+                + ";start=" + start_
+                + ";end=" + end_ 
+                + "]";
     }
 
     private String second_ = "0";
