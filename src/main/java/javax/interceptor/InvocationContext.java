@@ -50,6 +50,14 @@ public interface InvocationContext {
     public Object getTarget();
 
     /**
+     * Returns the Timer object associated with a timeout method 
+     * invocation.
+     * Returns null for around-invoke methods and lifecycle 
+     * callback interceptor methods
+     */
+    public Object getTimer();
+
+    /**
      * Returns the method of the bean class for which the interceptor
      * was invoked.  For AroundInvoke methods, this is the business
      * method on the bean class. For lifecycle callback methods, 
