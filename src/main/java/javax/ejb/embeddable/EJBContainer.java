@@ -20,7 +20,7 @@
  * 
  * Copyright 2006 Sun Microsystems, Inc. All rights reserved.
  */
-package javax.ejb;
+package javax.ejb.embeddable;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -31,6 +31,7 @@ import java.util.HashSet;
 import java.util.ServiceLoader;
 
 import javax.naming.Context;
+import javax.ejb.EJBException;
 import javax.ejb.spi.EJBContainerProvider;
 
 /** 
@@ -42,7 +43,7 @@ public abstract class EJBContainer {
      * Standard property name for specifying the embeddable container implementation bootstrap
      * class.  Property value is a fully-qualified class name.
      */
-    public static final String EMBEDDABLE_INITIAL_PROPERTY = "javax.ejb.embeddable.initial";
+    public static final String PROVIDER = "javax.ejb.embeddable.provider";
 
     /**
      * Standard property name for specifying the set of modules to be initialized.  Property
@@ -53,7 +54,7 @@ public abstract class EJBContainer {
      *   -- a java.io.File array, each element of which represents an ejb-jar 
      *        or exploded ejb-jar directory
      */
-    public static final String EMBEDDABLE_MODULES_PROPERTY = "javax.ejb.embeddable.modules";
+    public static final String MODULES = "javax.ejb.embeddable.modules";
 
     /**
      * Standard property name for specifying the application name of the EJB modules 
@@ -62,7 +63,7 @@ public abstract class EJBContainer {
      * this property is not specified, the <app-name> portion of the portable global 
      * JNDI name syntax does not apply.
      */
-    public static final String EMBEDDABLE_APP_NAME_PROPERTY = "javax.ejb.embeddable.appName";
+    public static final String APP_NAME = "javax.ejb.embeddable.appName";
 
     /**
      * Create and initialize an embeddable EJB container.  JVM classpath is 
@@ -104,6 +105,9 @@ public abstract class EJBContainer {
                 } else {
                     returnedNull.add(provider.getClass().getName());
                 }
+            } catch (EJBException e) {
+                // The provider is eligible but encountered problems
+                throw e;
             } catch (Throwable t) {
                 // ignore but remember the message in case all fail: 
                 // according to Spec the provider must return null from
@@ -152,7 +156,7 @@ public abstract class EJBContainer {
                 "No EJBContainer provider available");
 
         if (properties != null) {
-            Object specifiedProvider = properties.get(EMBEDDABLE_INITIAL_PROPERTY);
+            Object specifiedProvider = properties.get(PROVIDER);
             if (specifiedProvider != null) {
                 message.append(" for requested provider: " + specifiedProvider);
             }

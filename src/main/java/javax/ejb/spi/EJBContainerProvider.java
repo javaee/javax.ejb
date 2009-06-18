@@ -23,7 +23,7 @@
 package javax.ejb.spi;
 
 import java.util.Map;
-import javax.ejb.EJBContainer;
+import javax.ejb.embeddable.EJBContainer;
 import javax.ejb.EJBException;
 
 /**
