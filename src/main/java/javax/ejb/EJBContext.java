@@ -216,4 +216,11 @@ public interface EJBContext
      */
     Object lookup(String name);
 
+    /**
+     * Returns the context data associated with this invocation or
+     * lifecycle callback.  If there is no context data, an
+     * empty Map<String,Object> object will be returned.
+     */
+    Map<String, Object> getContextData();
+
 }

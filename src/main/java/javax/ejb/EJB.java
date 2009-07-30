@@ -85,4 +85,10 @@ public @interface EJB {
       * No use of a mapped name is portable. 
       */ 
     String mappedName() default "";
+
+    /**
+      * A portable lookup string that resolves to the target EJB component. 
+      *
+      */ 
+    String lookup() default "";
 }
