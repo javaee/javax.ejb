@@ -27,12 +27,10 @@ package javax.ejb;
  *
  * CONTAINER : Container managed concurrency
  * BEAN      : Bean managed concurrency
- * CONCURRENCY_NOT_ALLOWED : Concurrency not allowed
  *
  */
 public enum ConcurrencyManagementType {
     CONTAINER,
-    BEAN,
-    CONCURRENCY_NOT_ALLOWED
+    BEAN
 }
 

@@ -90,5 +90,5 @@ public @interface EJB {
       * A portable lookup string that resolves to the target EJB component. 
       *
       */ 
-    String lookup() default "";
+    String lookupName() default "";
 }

@@ -30,7 +30,7 @@ import java.io.Serializable;
  * A calendar-based timeout expression for an enterprise bean timer.
  */
 
-public final class ScheduleExpression implements Serializable {
+public class ScheduleExpression implements Serializable {
 
     public ScheduleExpression() {}
 
