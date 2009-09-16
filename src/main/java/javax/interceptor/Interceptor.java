@@ -23,17 +23,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import javax.annotation.Stereotype;
-
 /**
  * Specifies that a class is an interceptor.
- * 
- * @author Gavin King
  * 
  */
 @Retention(RUNTIME)
 @Target(TYPE)
-@Stereotype
 public @interface Interceptor
 {
 }
