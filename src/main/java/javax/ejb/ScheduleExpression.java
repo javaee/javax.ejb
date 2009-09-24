@@ -27,7 +27,29 @@ import java.util.Date;
 import java.io.Serializable;
 
 /**
- * A calendar-based timeout expression for an enterprise bean timer.
+ * A calendar-based timeout expression for an enterprise bean timer.  See
+ * EJB specification for the full timer expression syntax.
+ * 
+ * Each expression attribute has two overloaded setter methods, one that takes
+ * a String and one that takes an int.  The int version is merely a convenience method
+ * for setting the attribute in the common case that the value is a simple integer. 
+ * 
+ * E.g. scheduleExpression.second(10) is semantically equivalent to 
+ *      scheduleExpression.second("10")
+ *
+ * None of the ScheduleExpression methods are required to be called.  The defaults
+ * are :
+ *
+ * { second , minute , hour } : "0"
+ *
+ * { dayOfMonth, month, dayOfWeek, year } : "*"
+ *
+ * timezone : default JVM time zone
+ *
+ * startDate : no start date
+ * 
+ * endDate : no end date
+ *
  */
 
 public class ScheduleExpression implements Serializable {

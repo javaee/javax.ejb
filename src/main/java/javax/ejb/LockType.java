@@ -23,16 +23,22 @@
 package javax.ejb;
 
 /**
- * Concurrency lock type.
- *
- * READ     : For read-only operations.  Allows simultaneous access to methods
- *            designated as READ, as long as no WRITE lock is held.  
- *             
- * WRITE    : For write operations.  The WRITE lock is exclusive.
+ * Concurrency lock type for Singletons with container-managed concurrency.
  *
  */
 public enum LockType {
+
+    /**
+     * For read-only operations.  Allows simultaneous access to methods
+     * designated as READ, as long as no WRITE lock is held.  
+     */
     READ,
+
+    /**
+     * For exclusive access to the bean instance.  A WRITE lock can only
+     * be acquired when no other method with either a READ or WRITE lock
+     * is currently held.
+     */
     WRITE
 }
 

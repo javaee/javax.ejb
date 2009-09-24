@@ -23,14 +23,20 @@
 package javax.ejb;
 
 /**
- * Concurrency management type.  
- *
- * CONTAINER : Container managed concurrency
- * BEAN      : Bean managed concurrency
- *
+ * Concurrency management type for a singleton or stateful session
+ * bean.   Bean-managed concurrency only applies to singletons. 
  */
 public enum ConcurrencyManagementType {
+    /**
+     * Container is responsible for managing concurrent access 
+     * to a bean instance.
+     */
     CONTAINER,
+
+    /**
+     *  Bean developer is responsible for managing concurrent
+     *  access to a bean instance.
+     */
     BEAN
 }
 

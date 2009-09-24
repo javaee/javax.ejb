@@ -34,6 +34,12 @@ import java.util.concurrent.TimeUnit;
  * Specifies the amount of time a stateful session bean can
  * be idle ( not receive any client invocations ) before it
  * is eligible for removal by the container.
+ *
+ * A value of 0 means the bean is immediately eligible for removal.
+ *
+ * A value of -1 means the bean will never be removed due to timeout.
+ *
+ * Values less than -1 are not valid.
  * 
  */
 

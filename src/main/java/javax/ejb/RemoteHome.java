@@ -43,8 +43,13 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 
 /**
- * Declares the Remote Home or adapted Remote Home interface
- * for a session bean.
+ * Declares the Remote Home interface or adapted Remote Home interface
+ * for a session bean.  The value is never a 2.x Remote Component interface.
+ * 
+ * In the case of an adapted Remote Home interface, the Remote Component
+ * interface is derived from the return type of Remote Home interface's
+ * create method signature.
+ *
  */
 
 @Target({ElementType.TYPE})

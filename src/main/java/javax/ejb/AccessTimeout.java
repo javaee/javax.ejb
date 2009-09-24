@@ -32,8 +32,13 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Specifies the amount of time in a given time unit that a concurrent 
- * access attempt on a Singleton session bean should block before 
- * timing out.  
+ * access attempt should block before timing out.  
+ * 
+ * A value of 0 means concurrent access is not permitted.
+ * 
+ * A value of -1 means wait indefinitely to acquire a lock.
+ * 
+ * Values less than -1 are not valid.
  */
 
 @Target({METHOD, TYPE}) 

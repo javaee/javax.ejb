@@ -29,10 +29,16 @@ import java.util.concurrent.*;
 
 /**
   * Wraps the result of an asynchronous method call as a Future
-  * object preserving compatability with the business interface signature.
+  * object, preserving compatability with the business interface signature.
   *
   * The value specified in the constructor will be retrieved by the container
   * and made available to the client.
+  *
+  * Note that this object is not passed to the client.  It is
+  * merely a convenience for providing the result value to the container.
+  * Therefore, none of its instance methods should be called by the 
+  * application.
+  *
   */
 
 public final class AsyncResult<V> implements Future<V> {
@@ -43,28 +49,44 @@ public final class AsyncResult<V> implements Future<V> {
         resultValue = result;
     }
 
+    /**
+     * This method should not be called.  See Class-level comments.
+     */
     public boolean cancel(boolean mayInterruptIfRunning) {
         throw new java.lang.IllegalStateException
 	    ("Object does not represent an acutal Future");
     }
 
+    /**
+     * This method should not be called.  See Class-level comments.
+     */
     public boolean isCancelled() {
         throw new java.lang.IllegalStateException
 	    ("Object does not represent an acutal Future");
     }
 
+    /**
+     * This method should not be called.  See Class-level comments.
+     */
     public boolean isDone() {
         throw new java.lang.IllegalStateException
 	    ("Object does not represent an acutal Future");
     }
 
+    /**
+     * This method should not be called.  See Class-level comments.
+     */
     public V get() throws InterruptedException, ExecutionException {
-        return resultValue;
+	    return resultValue;
     }
 
+    /**
+     * This method should not be called.  See Class-level comments.
+     */
     public V get(long timeout, TimeUnit unit) 
 	throws InterruptedException, ExecutionException, TimeoutException {
-        return resultValue;
+	throw new java.lang.IllegalStateException
+	    ("Object does not represent an acutal Future");
     }
 
 }

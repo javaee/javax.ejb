@@ -29,7 +29,11 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Declares a Singleton bean's concurrency management type.
+ * Declares a Singleton or Stateful session bean's concurrency management type.
+ *
+ * The concurrency management type for bean-managed concurrency(BEAN)
+ * does not apply to stateful session beans.
+ *
  */
 
 @Target({TYPE}) 
