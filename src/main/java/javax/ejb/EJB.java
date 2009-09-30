@@ -42,8 +42,17 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Indicates a dependency on the local or remote view of an Enterprise
- * Java Bean.  
+ * Indicates a dependency on the local, no-interface, or remote view of an Enterprise
+ * Java Bean.
+ *
+ *
+ * Either beanName() or lookup() can be used to resolve the EJB dependency
+ * to its target session bean component.  It is an error to specify values for
+ * both beanName() and lookup().
+ *
+ * If no explicit linking information is provided and there is only one session
+ * bean within the same application that exposes the matching client view type,
+ * by default the EJB dependency resolves to that session bean.
  *
  */
 
@@ -53,7 +62,7 @@ public @interface EJB {
 
     /**
      * The logical name of the ejb reference within the declaring component's
-     * (java:comp/env) environment.
+     * (e.g., java:comp/env) environment.
      */
     String name() default "";
 
@@ -67,8 +76,9 @@ public @interface EJB {
     String beanName() default "";
 
     /**
-     * Holds one of the following interface types of the target EJB :
-     *  [ Local business interface, Remote business interface, 
+     * Holds one of the following types of the target EJB :
+     *  [ Local business interface, bean class (for no-interface view),
+     *    Remote business interface, 
      *    Local Home interface, Remote Home interface ]
      *  
      */
@@ -87,7 +97,7 @@ public @interface EJB {
     String mappedName() default "";
 
     /**
-      * A portable lookup string that resolves to the target EJB component. 
+      * A portable lookup string containing the JNDI name for the target EJB component. 
       *
       */ 
     String lookup() default "";
