@@ -132,7 +132,9 @@ public abstract class EJBContainer {
     abstract public Context getContext();
 
     /**
-     * Shutdown an embeddable EJBContainer instance.
+     * Shutdown an embeddable EJBContainer instance.  Embeddable applications
+     * should always call close() in order to free up the resources
+     * associated with the embeddable container.   
      */
     abstract public void close(); 
 
