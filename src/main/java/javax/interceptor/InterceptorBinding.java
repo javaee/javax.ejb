@@ -36,18 +36,19 @@
 
 package javax.interceptor;
 
-import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Specifies that a class is an interceptor.
+ * Specifies that an annotation type is an interceptor binding type.
  * 
  */
+
+@Target(ANNOTATION_TYPE)
 @Retention(RUNTIME)
-@Target(TYPE)
-public @interface Interceptor
-{
-}
+@Documented
+public @interface InterceptorBinding {}
