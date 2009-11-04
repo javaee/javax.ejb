@@ -43,6 +43,34 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 
+/**
+ * <p>Defines an interceptor method that interposes on business methods.
+ * May be applied to any non-final, non-static method with a single 
+ * parameter of type {@link javax.interceptor.InvocationContext} and
+ * return type {@link java.lang.Object} of the target class 
+ * (or superclass) or of any interceptor class.</p>
+ * 
+ * <pre>
+ * &#064;AroundInvoke
+ * public Object intercept(InvocationContext ctx) throws Exception { ... }
+ * </pre>
+ * 
+ * <p>A class may not declare more than one <tt>&#064;AroundInvoke</tt> 
+ * method.</p>
+ * 
+ * <p>An <tt>&#064;AroundInvoke</tt> method can invoke any component or 
+ * resource that the method it is intercepting can invoke.</p>
+ * 
+ * <p><tt>&#064;AroundInvoke</tt> method invocations occur within the same 
+ * transaction and security context as the method on which they are 
+ * interposing.</p>
+ * 
+ * <p><tt>&#064;AroundInvoke</tt> methods may throw any exceptions that are 
+ * allowed by the throws clause of the method on which they are 
+ * interposing. They may catch and suppress exceptions and recover 
+ * by calling {@link javax.interceptor.InvocationContext#proceed()}.</p>
+ *
+ */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface AroundInvoke {

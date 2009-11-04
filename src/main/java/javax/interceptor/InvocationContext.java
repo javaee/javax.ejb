@@ -39,37 +39,66 @@ import java.lang.reflect.Method;
 import java.util.Map;
 
 /**
- * Context information passed to AroundInvoke and 
- * Interceptor-class lifecycle callback methods.
+ * <p>Exposes context information about the intercepted invocation and operations 
+ * that enable interceptor methods to control the behavior of the invocation chain.</p>
+ * 
+ * <pre>
+ *
+ *    &#064;AroundInvoke
+ *    public Object logInvocation(InvocationContext ctx) throws Exception {
+ *       String class = ctx.getMethod().getDeclaringClass().getName();
+ *       String method = ctx.getMethod().getName();
+ *       Logger.global.entering(class, method, ctx.getParameters());
+ *       try {
+ *          Object result = ctx.proceed();
+ *          Logger.global.exiting(class, method, result);
+ *          return result;
+ *       }
+ *       catch (Exception e) {
+ *          Logger.global.throwing(class, method, e);
+ *          throw e;
+ *       }
+ *
+ *    }
+ * 
+ * </pre>
  */
 public interface InvocationContext {
 
     /**
-     * Returns the target instance. 
+     * Returns the target instance.
+     * 
+     * @return the target instance
      */
     public Object getTarget();
 
     /**
-     * Returns the Timer object associated with a timeout method 
-     * invocation.
-     * Returns null for around-invoke methods and lifecycle 
-     * callback interceptor methods
+     * Returns the timer object associated with a timeout
+     * method invocation on the target class, or a null value for method
+     * and lifecycle callback interceptor methods.  For example, when associated
+     * with an EJB component timeout, this method returns {@link javax.ejb.Timer}
+     * 
+     * @return the timer object or a null value
      */
     public Object getTimer();
 
     /**
      * Returns the method of the bean class for which the interceptor
-     * was invoked.  For AroundInvoke methods, this is the business
-     * method on the bean class. For lifecycle callback methods, 
-     * returns null.
+     * was invoked.  For method interceptors, the business method of the 
+     * target bean class is returned. For lifecycle callback interceptors, 
+     * a null value is returned.
+     * 
+     * @return the method, or a null value
      */
     public Method getMethod();
 
     /**
-     * Returns the parameters that will be used to invoke
-     * the business method.  If setParameters has been called, 
-     * getParameters() returns the values to which the parameters 
+     * Returns the parameter values that will be passed to the method of
+     * the target class. If {@code setParameters()} has been called,
+     * {@code getParameters()} returns the values to which the parameters 
      * have been set.  
+     * 
+     * @return the parameter values, as an array
      * 
      * @exception java.lang.IllegalStateException if invoked within
      * a lifecycle callback method.
@@ -77,30 +106,36 @@ public interface InvocationContext {
     public Object[] getParameters();
     
     /**
-     * Sets the parameters that will be used to invoke the 
-     * business method.  
+     * Sets the parameter values that will be passed to the method of the 
+     * target class.  
      *
      * @exception java.lang.IllegalStateException if invoked within
      * a lifecycle callback method.
      *
-     * @exception java.lang.IllegalArgumentException if the parameter types do not match 
-     * the types for the business method, or the number of parameters supplied does not
-     * equal the number of parameters for the business method.
+     * @exception java.lang.IllegalArgumentException if the types of the 
+     * given parameter values do not match the types of the method parameters, 
+     * or if the number of parameters supplied does not equal the number of 
+     * method parameters.
+     * 
+     * @param params the parameter values, as an array
      */
     public void setParameters(Object[] params);
 
     /**
      * Returns the context data associated with this invocation or
      * lifecycle callback.  If there is no context data, an
-     * empty Map<String,Object> object will be returned.  
+     * empty {@code Map<String,Object>} object will be returned.
+     * 
+     * @return the context data, as a map
      */
     public Map<String, Object> getContextData();
 
     /**
-     * Proceed to the next entry in the interceptor chain.
-     * The proceed method returns the result of the next
-     * method invoked.  If the method returns void, proceed
-     * returns null.
+     * Proceed to the next interceptor in the interceptor chain.
+     * Return the result of the next method invoked, or a null 
+     * value if the method has return type void, return.
+     * 
+     * @return the return value of the next method in the chain
      */
     public Object proceed() throws Exception;
 

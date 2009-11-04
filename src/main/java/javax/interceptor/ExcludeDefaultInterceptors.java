@@ -43,7 +43,20 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 
 /**
- * Used to exclude default interceptors for a bean or a business method.
+ * <p>Used to exclude default interceptors for a target class or 
+ * for a business method or timeout method of a target class.</p>
+ * 
+ * <pre>
+ * &#064;ExcludeDefaultInterceptors
+ * &#064;Interceptors(ValidationInterceptor.class)
+ * public class Order { ... }
+ * </pre>
+ * 
+ * <pre>
+ * &#064;ExcludeDefaultInterceptors
+ * public void updateOrder(Order order) { ... }
+ * </pre>
+ * 
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
