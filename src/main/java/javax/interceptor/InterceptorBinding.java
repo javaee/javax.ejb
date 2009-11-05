@@ -54,7 +54,7 @@ import java.lang.annotation.Target;
  * public &#064;interface Valid {}
  * </pre>
  * 
- * <p>{@linkplain javax.enterprise.inject CDI interceptor bindings}
+ * <p>Interceptor bindings
  * are intermediate annotations that may be used to associate 
  * interceptors with target beans.</p>
  * 
@@ -69,7 +69,7 @@ import java.lang.annotation.Target;
  * 
  * <p>An interceptor may specify multiple interceptor bindings.</p>
  * 
- * <p>An interceptor binding of a {@linkplain javax.enterprise.inject CDI bean} 
+ * <p>An interceptor binding of a bean 
  * may be declared by annotating the bean class, or a method of the bean class, 
  * with the interceptor binding type.</p>
  * 

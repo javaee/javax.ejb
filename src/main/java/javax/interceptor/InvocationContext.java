@@ -83,9 +83,9 @@ public interface InvocationContext {
     public Object getTimer();
 
     /**
-     * Returns the method of the bean class for which the interceptor
-     * was invoked.  For method interceptors, the business method of the 
-     * target bean class is returned. For lifecycle callback interceptors, 
+     * Returns the method of the target class for which the interceptor
+     * was invoked.  For method interceptors, the method of the 
+     * target class is returned. For lifecycle callback interceptors, 
      * a null value is returned.
      * 
      * @return the method, or a null value

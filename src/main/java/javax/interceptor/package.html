@@ -25,7 +25,7 @@ class associated with the target class.</p>
 
 <ul>
   <li>{@linkplain javax.interceptor.AroundInvoke method interceptor methods} for 
-  business methods of a target class (e.g. managed bean / EJB component)</li>
+  methods of a target class (e.g. managed bean / EJB component)</li>
   <li>{@linkplain javax.interceptor.AroundTimeout timeout method interceptor methods} 
   for timeout methods of a target class (e.g. EJB component)</li>
   <li>lifecycle callback interceptor methods for 
@@ -61,7 +61,7 @@ descriptor are used to bind the interceptor to its target classes.</p>
 
 <h3>Defining the interceptor classes of a target class</h3>
 
-<p>Interceptor classes of a target class or method of a target class may defined in 
+<p>Interceptor classes of a target class or method of a target class may be defined in 
 several ways:</p>
 
 <ul>
@@ -70,7 +70,7 @@ several ways:</p>
   interceptor class.</li>
   <li>If the target class is an EJB component, by using the EJB deployment descriptor.</li>
   <li>If the target class is a {@linkplain javax.enterprise.inject CDI bean}, by 
-  annotation both the interceptor class and the target class with an 
+  annotating both the interceptor class and the target class with an 
   {@linkplain javax.interceptor.InterceptorBinding interceptor binding}.</li>
 </ul>
 
