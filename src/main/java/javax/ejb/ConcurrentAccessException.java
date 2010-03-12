@@ -43,6 +43,9 @@ package javax.ejb;
  * while another invocation is in progress.
  */
 public class ConcurrentAccessException extends EJBException {
+
+    private static final long serialVersionUID = -8980855319866981477L;
+
     /**
      * Constructs an ConcurrentAccessException with no detail message.
      */  

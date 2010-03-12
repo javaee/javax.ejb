@@ -42,6 +42,8 @@ package javax.ejb;
  */
 public class EJBTransactionRequiredException extends EJBException {
 
+    private static final long serialVersionUID = 8880799605373282306L;
+
     /**
      * Constructs an EJBTransactionRequiredException with no detail message.
      */  

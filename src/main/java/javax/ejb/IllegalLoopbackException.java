@@ -44,6 +44,8 @@ package javax.ejb;
  */
 public class IllegalLoopbackException extends ConcurrentAccessException {
 
+    private static final long serialVersionUID = -8854624128500916709L;
+
     public IllegalLoopbackException() {}
 
     public IllegalLoopbackException(String message) {

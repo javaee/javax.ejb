@@ -42,6 +42,8 @@ package javax.ejb;
  */
 public class EJBAccessException extends EJBException {
 
+    private static final long serialVersionUID = 4923220329322198628L;
+
     /**
      * Constructs an EJBAccessException with no detail message.
      */  

@@ -46,6 +46,9 @@ package javax.ejb;
  * collection instead).
  */
 public class ObjectNotFoundException extends FinderException {
+
+    private static final long serialVersionUID = 4624364141026778L;
+
     /**
      * Constructs an ObjectNotFoundException with no detail message.
      */  

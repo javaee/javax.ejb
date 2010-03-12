@@ -67,6 +67,8 @@ import java.io.Serializable;
 
 public class ScheduleExpression implements Serializable {
 
+    private static final long serialVersionUID = -3813254457230997879L;
+
     public ScheduleExpression() {}
 
     public ScheduleExpression second(String s) {

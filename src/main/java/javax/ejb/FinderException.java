@@ -44,6 +44,9 @@ package javax.ejb;
  * report a failure to find the requested EJB object(s).
  */
 public class FinderException extends java.lang.Exception {
+
+    private static final long serialVersionUID = 8785983102057433621L;
+
     /**
      * Constructs an FinderException with no detail message.
      */  

@@ -42,6 +42,9 @@ package javax.ejb;
  * the EJB object to be removed.
  */
 public class RemoveException extends java.lang.Exception {
+
+    private static final long serialVersionUID = -4581849053220157910L;
+
     /**
      * Constructs an RemoveException with no detail message.
      */  

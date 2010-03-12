@@ -42,6 +42,8 @@ package javax.ejb;
  */
 public class TransactionRequiredLocalException extends EJBException {
 
+    private static final long serialVersionUID = -3884174204131319153L;
+
     /**
      * Constructs a TransactionRequiredLocalException with no detail message.
      */  

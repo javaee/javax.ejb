@@ -42,6 +42,8 @@ package javax.ejb;
  */
 public class NoMoreTimeoutsException extends EJBException {
 
+    private static final long serialVersionUID = 1373788283844991998L;
+
     public NoMoreTimeoutsException() {}
 
     public NoMoreTimeoutsException(String message) {

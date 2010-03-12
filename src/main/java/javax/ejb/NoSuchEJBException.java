@@ -42,6 +42,8 @@ package javax.ejb;
  */
 public class NoSuchEJBException extends EJBException {
 
+    private static final long serialVersionUID = -4861625171310593950L;
+
     /**
      * Constructs a NoSuchEJBException with no detail message.
      */  

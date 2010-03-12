@@ -43,6 +43,9 @@ package javax.ejb;
  * Bean's home interface.
  */
 public class DuplicateKeyException extends CreateException {
+
+    private static final long serialVersionUID = -7287399994705270076L;
+
     /**
      * Constructs a DuplicateKeyException with no detail message.
      */  

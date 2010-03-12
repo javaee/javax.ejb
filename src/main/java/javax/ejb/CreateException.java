@@ -46,6 +46,8 @@ package javax.ejb;
  */
 public class CreateException extends java.lang.Exception {
 
+    private static final long serialVersionUID = 7899534274371798660L;
+
     /**
      * Constructs a CreateException with no detail message.
      */  

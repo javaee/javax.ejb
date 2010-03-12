@@ -44,6 +44,7 @@ package javax.ejb;
  */
 public class EJBException extends java.lang.RuntimeException {
     
+    private static final long serialVersionUID = 796770993296843510L;
 
     /**
      * Constructs an EJBException with no detail message.

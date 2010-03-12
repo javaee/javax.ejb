@@ -42,6 +42,8 @@ package javax.ejb;
  */
 public class NoSuchObjectLocalException extends EJBException {
 
+    private static final long serialVersionUID = 9151491108833037318L;
+
     /**
      * Constructs a NoSuchObjectLocalException with no detail message.
      */  

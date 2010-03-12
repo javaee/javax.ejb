@@ -47,6 +47,9 @@ package javax.ejb;
  * the ejbLoad and ejbStore methods.
  */
 public class NoSuchEntityException extends EJBException {
+
+    private static final long serialVersionUID = -4815730078295420703L;
+
     /**
      * @serial
      */

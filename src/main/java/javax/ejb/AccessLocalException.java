@@ -43,6 +43,8 @@ package javax.ejb;
  */
 public class AccessLocalException extends EJBException {
 
+    private static final long serialVersionUID = -4089104928924996726L;
+    
     /**
      * Constructs an AccessLocalException with no detail message.
      */  

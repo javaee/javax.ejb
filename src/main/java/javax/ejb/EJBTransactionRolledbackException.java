@@ -45,6 +45,8 @@ package javax.ejb;
  */
 public class EJBTransactionRolledbackException extends EJBException {
 
+    private static final long serialVersionUID = -8301720350425840333L;
+
     /**
      * Constructs an EJBTransactionRolledbackException with no detail message.
      */  
