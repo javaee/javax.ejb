@@ -47,28 +47,28 @@ package javax.ejb;
  * valid transaction context.
  * 
  * <p>
- * For a message-driven bean’s message listener methods (or interface), only 
+ * For a message-driven bean's message listener methods (or interface), only 
  * the <code>REQUIRED</code> and <code>NOT_SUPPORTED</code> values may be used.
  * <p>
  *
- * For an enterprise bean’s timeout callback methods, only the 
+ * For an enterprise bean's timeout callback methods, only the 
  * <code>REQUIRED</code>, <code>REQUIRES_NEW</code> and <code>NOT_SUPPORTED</code>
  * values may be used.
  * <p>
  *
- * For a session bean’s asynchronous business methods, only the 
+ * For a session bean's asynchronous business methods, only the 
  * <code>REQUIRED</code>, <code>REQUIRES_NEW</code>, and <code>NOT_SUPPORTED</code>
  * values may be used.
  *
  * <p>
- * For a singleton session bean’s <code>PostConstruct</code> and <code>PreDestroy</code>
+ * For a singleton session bean's <code>PostConstruct</code> and <code>PreDestroy</code>
  * lifecycle callback interceptor methods, only the <code>REQUIRED</code>, 
  * <code>REQUIRES_NEW</code>, and <code>NOT_SUPPORTED</code> values may be used.
  *
  * <p>
  * If an enterprise bean implements the <code>SessionSynchronization</code> interface
  * or uses any of the session synchronization annotations, only the following values 
- * may be used for the transaction attributes of the bean’s methods: 
+ * may be used for the transaction attributes of the bean's methods: 
  * <code>REQUIRED</code>, <code>REQUIRES_NEW</code>, <code>MANDATORY</code>.
  *
  * @see TransactionAttribute
@@ -80,7 +80,7 @@ public enum TransactionAttributeType {
     /**
      * If a client invokes the enterprise bean's method while the client 
      * is associated with a transaction context, the container invokes the 
-     * enterprise bean’s method in the client’s transaction context.  
+     * enterprise bean's method in the client's transaction context.  
      *
      *<p>
      * If there is no existing transaction, an exception is thrown.
@@ -88,12 +88,12 @@ public enum TransactionAttributeType {
    MANDATORY,
 
    /**
-    * If a client invokes the enterprise bean’s method while the client is 
+    * If a client invokes the enterprise bean's method while the client is 
     * associated with a transaction context, the container invokes the 
-    * enterprise bean’s method in the client’s transaction context.
+    * enterprise bean's method in the client's transaction context.
     *
     * <p>
-    * If the client invokes the enterprise bean’s method while the client is 
+    * If the client invokes the enterprise bean's method while the client is 
     * not associated with a transaction context, the container automatically 
     * starts a new transaction before delegating a method call to the enterprise 
     * bean method.
@@ -105,7 +105,7 @@ public enum TransactionAttributeType {
     * attribute is set to <code>REQUIRES_NEW</code> with a new transaction context.
     *
     * <p>
-    * If the client invokes the enterprise bean’s method while the client is not 
+    * If the client invokes the enterprise bean's method while the client is not 
     * associated with a transaction context, the container automatically starts 
     * a new transaction before delegating a method call to the enterprise bean 
     * business method.  
@@ -142,7 +142,7 @@ public enum TransactionAttributeType {
     * <p>
     * If a client calls with a transaction context, the container suspends the 
     * association of the transaction context with the current thread before 
-    * invoking the enterprise bean’s business method. The container resumes 
+    * invoking the enterprise bean's business method. The container resumes 
     * the suspended association when the business method has completed.
     */
    NOT_SUPPORTED,
