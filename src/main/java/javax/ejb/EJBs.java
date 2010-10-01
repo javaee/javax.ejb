@@ -46,7 +46,11 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Declares multiple TYPE-level @EJB annotations.
+ * Declares multiple <code>EJB</code> annotations. 
+ *
+ * @see EJB
+ *
+ * @since EJB 3.0
  */
 @Target(TYPE)
 @Retention(RUNTIME)

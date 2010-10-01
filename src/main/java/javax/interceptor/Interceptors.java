@@ -61,13 +61,19 @@ import java.lang.annotation.Retention;
  * </pre>
  * 
  * <p>Only method interception or timeout method interception may be specified 
- * by a method-level <tt>&#064;Interceptors</tt> declaration.</p>
+ * by a method-level <tt>Interceptors</tt> declaration.</p>
  * 
  * @see javax.interceptor.ExcludeClassInterceptors
  * @see javax.interceptor.ExcludeDefaultInterceptors
+ *
+ * @since Interceptors 1.0
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Interceptors {
+
+    /**
+     * An ordered list of interceptors.
+     */
     Class[] value();
 }

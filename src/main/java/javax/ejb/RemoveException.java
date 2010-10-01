@@ -41,9 +41,11 @@
 package javax.ejb;
 
 /**
- * The RemoveException exception is thrown at an attempt to remove
- * an EJB object when the enterprise Bean or the container does not allow 
- * the EJB object to be removed.
+ * The RemoveException is thrown at an attempt to remove an
+ * EJB object or local EJB object when the enterprise bean or the
+ * container does not allow the EJB object to be removed.
+ *
+ * @since EJB 1.0
  */
 public class RemoveException extends java.lang.Exception {
 

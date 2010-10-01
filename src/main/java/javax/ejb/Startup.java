@@ -46,7 +46,9 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Mark a Singleton for eager loading during application initialization.
+ * Mark a singleton bean for eager initialization during the application startup sequence.
+ *
+ * @since EJB 3.1
  */
 
 @Target(TYPE) 

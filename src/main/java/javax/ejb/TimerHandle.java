@@ -44,8 +44,13 @@ import java.io.Serializable;
 
 /**
  *
- * The TimerHandle interface is implemented by all EJB timer handles.
+ * The TimerHandle interface allows the bean provider to obtain a
+ * serializable timer handle that may be persisted. 
+ * <p>
+ * Since timers are local objects, a timer handle must not be passed through 
+ * a bean’s remote business interface, remote interface or web service interface.
  *
+ * @since EJB 2.1
  */
 public interface TimerHandle extends Serializable {
 

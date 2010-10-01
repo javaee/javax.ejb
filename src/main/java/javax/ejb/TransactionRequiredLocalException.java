@@ -41,8 +41,11 @@
 package javax.ejb;
 
 /**
- * This exception indicates that a request carried a null transaction context, 
- * but the target object requires an active transaction.  
+ * This exception is thrown to a local client to indicate that a
+ * request carried a null transaction context, but the target object
+ * requires an active transaction.
+ *
+ * @since EJB 2.0
  */
 public class TransactionRequiredLocalException extends EJBException {
 

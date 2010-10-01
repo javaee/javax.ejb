@@ -41,14 +41,16 @@
 package javax.ejb;
 
 /**
- * The NoSuchEntityException exception is thrown by an Entity Bean 
+ * The NoSuchEntityException exception is thrown by an entity bean 
  * instance to its container to report that the invoked business method 
  * or callback method could not be completed because of the underlying
  * entity was removed from the database. 
  *
  * <p>This exception may be thrown by the bean class methods that implement
- * the business methods defined in the bean's component interface; and by 
- * the ejbLoad and ejbStore methods.
+ * the business methods defined in the bean's component interface and by 
+ * the <code>ejbLoad</code> and <code>ejbStore</code> methods.
+ *
+ * @since EJB 1.1
  */
 public class NoSuchEntityException extends EJBException {
 

@@ -42,7 +42,9 @@ package javax.ejb;
 
 /**  
  * A NoSuchEJBException is thrown if an attempt is made to invoke
- * a method on an object that no longer exists.
+ * a business method on a stateful session or singleton object that no longer exists.
+ *
+ * @since EJB 3.0
  */
 public class NoSuchEJBException extends EJBException {
 

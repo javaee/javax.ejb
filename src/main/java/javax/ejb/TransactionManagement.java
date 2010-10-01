@@ -46,10 +46,16 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Declares whether a session bean or message driven bean has
+ * Specifies whether a session bean or message driven bean has
  * container managed transactions or bean managed transactions.
+ *
+ * If this annotation is not used, the bean is assumed to have
+ * container-managed transaction management.
+ *
+ * @see TransactionManagementType
+ *
+ * @since EJB 3.0
  */
-
 @Target(TYPE) 
 @Retention(RUNTIME)
 public @interface TransactionManagement {

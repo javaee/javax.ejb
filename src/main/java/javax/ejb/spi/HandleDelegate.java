@@ -49,24 +49,27 @@ import javax.ejb.EJBHome;
 
 
 /**
- * The HandleDelegate interface is implemented by the EJB container. 
- * It is used by portable implementations of javax.ejb.Handle and
- * javax.ejb.HomeHandle.
+ * The <code>HandleDelegate</code> interface is implemented by the EJB container. 
+ * It is used by portable implementations of <code>javax.ejb.Handle</code> and
+ * <code>javax.ejb.HomeHandle</code>.
  * It is not used by EJB components or by client components.
  * It provides methods to serialize and deserialize EJBObject and
  * EJBHome references to streams.
  *
- * <p> The HandleDelegate object is obtained by JNDI lookup at the
- * reserved name "java:comp/HandleDelegate".
+ * <p> The <code>HandleDelegate</code> object is obtained by JNDI lookup at the
+ * reserved name <code>"java:comp/HandleDelegate"</code>.
+ *
+ * @since EJB 2.0
  */
 
 public interface HandleDelegate {
     /**
      * Serialize the EJBObject reference corresponding to a Handle.
      *
-     * <p> This method is called from the writeObject method of 
-     * portable Handle implementation classes. The ostream object is the
-     * same object that was passed in to the Handle class's writeObject.
+     * <p> This method is called from the <code>writeObject</code> method of 
+     * portable Handle implementation classes. The <code>ostream</code> object is the
+     * same object that was passed in to the Handle class's <code>writeObject</code>
+     * method.
      *
      * @param ejbObject The EJBObject reference to be serialized.
      *
@@ -82,13 +85,15 @@ public interface HandleDelegate {
     /**
      * Deserialize the EJBObject reference corresponding to a Handle.
      *
-     * <p> readEJBObject is called from the readObject method of 
-     * portable Handle implementation classes. The istream object is the
-     * same object that was passed in to the Handle class's readObject.
-     * When readEJBObject is called, istream must point to the location
-     * in the stream at which the EJBObject reference can be read.
-     * The container must ensure that the EJBObject reference is 
-     * capable of performing invocations immediately after deserialization.
+     * <p> The <code>readEJBObject</code> method is called from the
+     * <code>readObject</code> method of portable <code>Handle</code>
+     * implementation classes. The <code>istream</code> object is the
+     * same object that was passed in to the Handle class's
+     * <code>readObject</code> method.  When<code>readEJBObject</code> is called,
+     * <code>istream</code> must point to the location in the stream at which the
+     * EJBObject reference can be read.  The container must ensure
+     * that the EJBObject reference is capable of performing
+     * invocations immediately after deserialization.
      *
      * @param istream The input stream.
      *
@@ -105,9 +110,10 @@ public interface HandleDelegate {
     /**
      * Serialize the EJBHome reference corresponding to a HomeHandle.
      *
-     * <p> This method is called from the writeObject method of 
-     * portable HomeHandle implementation classes. The ostream object is the
-     * same object that was passed in to the Handle class's writeObject.
+     * <p> This method is called from the <code>writeObject</code> method of 
+     * portable <code>HomeHandle</code> implementation classes. The <code>ostream</code>
+     * object is the same object that was passed in to the <code>Handle</code>
+     * class's <code>writeObject</code> method.
      *
      * @param ejbHome The EJBHome reference to be serialized.
      *
@@ -122,10 +128,12 @@ public interface HandleDelegate {
     /**
      * Deserialize the EJBHome reference corresponding to a HomeHandle.
      *
-     * <p> readEJBHome is called from the readObject method of 
-     * portable HomeHandle implementation classes. The istream object is the
-     * same object that was passed in to the HomeHandle class's readObject.
-     * When readEJBHome is called, istream must point to the location
+     * <p> The <code>readEJBHome</code> method is called from the 
+     * <code>readObject</code> method of  portable <code>HomeHandle</code>
+     * implementation classes. The <code>istream</code> object is the
+     * same object that was passed in to the <code>HomeHandle</code> class's
+     * <code>readObject</code> method.  When <code>readEJBHome</code> is called, 
+     * <code>istream</code> must point to the location
      * in the stream at which the EJBHome reference can be read.
      * The container must ensure that the EJBHome reference is 
      * capable of performing invocations immediately after deserialization.

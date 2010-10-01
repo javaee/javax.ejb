@@ -47,6 +47,8 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * Component-defining annotation for a singleton session bean.
+ *
+ * @since EJB 3.1
  */
 
 @Target(TYPE) 
@@ -54,12 +56,13 @@ import static java.lang.annotation.RetentionPolicy.*;
 public @interface Singleton {
 
     /**
-     * ejb-name for this bean.
+     * The ejb-name for this bean.  Defaults to the unqualified name of
+     * the singleton session bean class.
      */
     String name() default "";
 
     /**
-      * A product specific name(e.g. global JNDI name) 
+      * A product specific name(for example, global JNDI name) 
       * that this session bean should be mapped to.  
       * 
       * Application servers are not required to support any particular 
@@ -69,6 +72,9 @@ public @interface Singleton {
       */ 
     String mappedName() default "";
 
+    /**
+     * A string describing the singleton session bean.
+     */ 
     String description() default "";
 }
 

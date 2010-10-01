@@ -43,8 +43,13 @@ package javax.ejb;
 
 /**
  * A ConcurrentAccessException indicates that the client 
- * has attempted an invocation on a stateful session bean
- * while another invocation is in progress.
+ * has attempted an invocation on a stateful session bean or singleton bean
+ * while another invocation is in progress and such concurrent access
+ * is not allowed.
+ *
+ * @see AccessTimeout
+ *
+ * @since EJB 3.1
  */
 public class ConcurrentAccessException extends EJBException {
 

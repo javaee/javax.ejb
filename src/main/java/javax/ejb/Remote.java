@@ -48,12 +48,31 @@ import java.lang.annotation.Retention;
 
 /**
  * Declares the remote business interface(s) for a session bean.
+ * <p>
+ * The <code>Remote</code> annotation is applied to the session bean class or remote 
+ * business interface to designate a remote business interface of the bean.
+ * <p>
  * When used on an interface, designates that interface as a remote
- * business interface.  In this case, no value() is provided.
+ * business interface.  In this case, no <code>value</code> element should
+ * be provided.
+ * <p>
+ * The <code>Remote</code> annotation applies only to session beans and 
+ * their interfaces.
+ *
+ * @since EJB 3.0
  */
 
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Remote {
+
+    /**
+     * Specifies the remote business interface(s) of the bean.  The <code>value</code>
+     * element is specified only when the annotation is applied to the bean class. 
+     * It is only required to be specified if the bean class implements more 
+     * than one interface (excluding <code>java.io.Serializable</code>, 
+     * <code>java.io.Externalizable</code>, and any of the interfaces 
+     * defined by the <code>javax.ejb</code> package).
+     */
     Class[] value() default {};
 } 

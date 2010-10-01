@@ -43,11 +43,18 @@ package javax.ejb;
 import java.io.Serializable;
 
 /**
- * The TimedObject interface contains the callback method that 
- * is used to deliver timer expiration notifications.  It is
- * implemented by an entity bean or stateless session bean or
- * message-driven bean class.
+ * The <code>TimedObject</code> interface contains a callback method
+ * that is used to deliver timer expiration notifications.  It can be
+ * implemented by a stateless session bean class, a singleton session
+ * bean class, a message-driven bean class, or an EJB 2.x entity bean class.
+ * <p>
+ * If the bean implements the <code>TimedObject</code> interface, the
+ * <code>Timeout</code> annotation, if used, can only be applied to 
+ * the <code>ejbTimeout</code> method.
  *
+ * @see Timeout
+ *
+ * @since EJB 2.1
  */
 public interface TimedObject {
 

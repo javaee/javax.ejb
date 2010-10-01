@@ -43,16 +43,22 @@ package javax.ejb;
 import java.rmi.RemoteException;
 
 /**
- * <p> The SessionSynchronization interface allows a session Bean instance
- * to be notified by its container of transaction boundaries.
+ * <p> The SessionSynchronization interface allows a stateful session
+ * bean instance to be notified by its container of transaction
+ * boundaries.
  *
- * <p>  An session Bean class is not required to implement this interface.
- * A session Bean class should implement this interface only if it wishes 
- * to synchronize its state with the transactions.
+ * <p> Only a stateful session bean with container-managed transaction 
+ * demarcation can receive session synchronization notifications. Other bean
+ * types must not implement the SessionSynchronization interface or use 
+ * the session synchronization annotations.
+ *
+ * <p>  A stateful session bean class is not required to implement this interface.
+ *
+ * @since EJB 1.0
  */
 public interface SessionSynchronization {
     /**
-     * The afterBegin method notifies a session Bean instance that a new
+     * The <code>afterBegin</code> method notifies a stateful session bean instance that a new
      * transaction has started, and that the subsequent business methods on the
      * instance will be invoked in the context of the transaction.
      *
@@ -67,23 +73,25 @@ public interface SessionSynchronization {
      * @exception RemoteException This exception is defined in the method
      *    signature to provide backward compatibility for enterprise beans 
      *    written for the EJB 1.0 specification. Enterprise beans written 
-     *    for the EJB 1.1 and higher specifications should throw the
+     *    for the EJB 1.1 and later specifications should throw the
      *    javax.ejb.EJBException instead of this exception. 
-     *    Enterprise beans written for the EJB 2.0 and higher specifications 
+     *    Enterprise beans written for the EJB 2.0 and later specifications 
      *    must not throw the java.rmi.RemoteException.
+     *
+     * @see AfterBegin
      */
     public void afterBegin() throws EJBException, RemoteException;
 
     /**
-     * The beforeCompletion method notifies a session Bean instance that
+     * The <code>beforeCompletion</code> method notifies a stateful session bean instance that
      * a transaction is about to be committed. The instance can use this
      * method, for example, to write any cached data to a database.
      *
      * <p> This method executes in the proper transaction context.
      *
      * <p><b>Note:</b> The instance may still cause the container to
-     * rollback the transaction by invoking the setRollbackOnly() method
-     * on the instance context, or by throwing an exception.
+     * rollback the transaction by invoking the <code>setRollbackOnly</code> method
+     * on the session context, or by throwing an exception.
      *
      * @exception EJBException Thrown by the method to indicate a failure
      *    caused by a system-level error.
@@ -91,19 +99,19 @@ public interface SessionSynchronization {
      * @exception RemoteException This exception is defined in the method
      *    signature to provide backward compatibility for enterprise beans 
      *    written for the EJB 1.0 specification. Enterprise beans written 
-     *    for the EJB 1.1 and higher specification should throw the
+     *    for the EJB 1.1 and later specification should throw the
      *    javax.ejb.EJBException instead of this exception.
-     *    Enterprise beans written for the EJB 2.0 and higher specifications 
+     *    Enterprise beans written for the EJB 2.0 and later specifications 
      *    must not throw the java.rmi.RemoteException.
+     *
+     * @see BeforeCompletion
      */
     public void beforeCompletion() throws EJBException, RemoteException;
 
     /**
-     * The afterCompletion method notifies a session Bean instance that a
+     * The <code>afterCompletion</code> method notifies a stateful session bean instance that a
      * transaction commit protocol has completed, and tells the instance
      * whether the transaction has been committed or rolled back.
-     *
-     * <p> This method executes with no transaction context.
      *
      * <p> This method executes with no transaction context.
      *
@@ -116,10 +124,12 @@ public interface SessionSynchronization {
      * @exception RemoteException This exception is defined in the method
      *    signature to provide backward compatibility for enterprise beans 
      *    written for the EJB 1.0 specification. Enterprise beans written 
-     *    for the EJB 1.1 and higher specification should throw the
+     *    for the EJB 1.1 and later specification should throw the
      *    javax.ejb.EJBException instead of this exception. 
-     *    Enterprise beans written for the EJB 2.0 and higher specifications 
+     *    Enterprise beans written for the EJB 2.0 and later specifications 
      *    must not throw the java.rmi.RemoteException.
+     *
+     * @see AfterCompletion
      */
     public void afterCompletion(boolean committed) throws EJBException,
 	    RemoteException;

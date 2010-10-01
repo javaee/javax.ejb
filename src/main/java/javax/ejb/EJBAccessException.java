@@ -43,6 +43,8 @@ package javax.ejb;
 /**
  * This exception indicates that client access to a business
  * method was denied.
+ *
+ * @since EJB 3.0
  */
 public class EJBAccessException extends EJBException {
 

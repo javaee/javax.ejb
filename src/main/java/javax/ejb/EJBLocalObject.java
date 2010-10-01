@@ -41,21 +41,28 @@
 package javax.ejb;
 
 /**
- * The EJBLocalObject interface must be extended by all enterprise Beans' local
- * interfaces. An enterprise Bean's local interface provides the local client 
- * view of an EJB object. An enterprise Bean's local interface defines 
+ * The EJBLocalObject interface must be extended by all enterprise beans' local
+ * interfaces. An enterprise bean's local interface provides the local client 
+ * view of an EJB object. An enterprise bean's local interface defines 
  * the business methods callable by local clients.
  *
- * <p> The enterprise Bean's local interface is defined by the enterprise
- * Bean provider and implemented by the enterprise Bean container.
+ * <p> The enterprise bean's local interface is defined by the enterprise
+ * bean provider and implemented by the enterprise bean container.
+ * 
+ * <p>
+ * Enterprise beans written to the EJB 3.0 and later APIs do not require
+ * a local interface that extends the EJBLocalObject interface.  A local
+ * business interface can be used instead.
+ *
+ * @since EJB 2.0
  */
 public interface EJBLocalObject {
     /**
-     * Obtain the enterprise Bean's local home interface. The local home
-     * interface defines the enterprise Bean's create, finder, remove,
+     * Obtain the enterprise bean's local home interface. The local home
+     * interface defines the enterprise bean's create, finder, remove,
      * and home business methods that are available to local clients.
      * 
-     * @return A reference to the enterprise Bean's local home interface.
+     * @return A reference to the enterprise bean's local home interface.
      *
      * @exception EJBException Thrown when the method failed due to a
      *    system-level failure.
@@ -67,7 +74,7 @@ public interface EJBLocalObject {
      * Obtain the primary key of the EJB local object. 
      *
      * <p> This method can be called on an entity bean. 
-     * An attempt to invoke this method on a session Bean will result in
+     * An attempt to invoke this method on a session bean will result in
      * an EJBException.
      *
      * @return The EJB local object's primary key.
@@ -81,7 +88,7 @@ public interface EJBLocalObject {
     /**
      * Remove the EJB local object.
      *
-     * @exception RemoveException The enterprise Bean or the container
+     * @exception RemoveException The enterprise bean or the container
      *    does not allow destruction of the object.
      *
      * @exception EJBException Thrown when the method failed due to a

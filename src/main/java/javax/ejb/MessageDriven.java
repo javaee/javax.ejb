@@ -47,19 +47,32 @@ import java.lang.annotation.Target;
 
 /**
  * Component-defining annotation for a message driven bean.  
+ * <p>
+ * The message driven bean must implement the appropriate message
+ * listener interface for the messaging type that the message-driven
+ * bean supports or specify the message listener interface using the
+ * <code>messageListenerInterface</code> element of this annotation.
+ *
+ * @see ActivationConfigProperty
+ *
+ * @since EJB 3.0
  */
-
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface MessageDriven {
 
     /**
-     * ejb-name for this bean.
+     * The ejb-name for this bean.  Defaults to the unqualified name of
+     * the message driven bean class.
      */
     String name() default "";
 
     /**
-     * Message-listener interface.
+     * Message-listener interface.  If the message-driven bean class
+     * implements more than one interface other than <code>java.io.Serializable</code>,
+     * <code>java.io.Externalizable</code>, or any of the interfaces defined by the
+     * <code>javax.ejb</code> package, the message listener interface must be 
+     * specified.
      */
     Class messageListenerInterface() default Object.class;
 
@@ -79,6 +92,9 @@ public @interface MessageDriven {
       */ 
     String mappedName() default "";
 
+    /**
+     * A string describing the message driven bean.
+     */ 
     String description() default "";
 }
 

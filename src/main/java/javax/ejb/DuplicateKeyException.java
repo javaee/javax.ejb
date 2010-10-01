@@ -41,10 +41,12 @@
 package javax.ejb;
 
 /**
- * The DuplicateKeyException exception is thrown if an entity EJB object 
- * cannot be created because an object with the same key already exists.
- * This exception is thrown by the create methods defined in an entity
- * Bean's home interface.
+ * The DuplicateKeyException exception is thrown if an entity EJB
+ * object or EJB local object cannot be created because an object with the
+ * same key already exists.  This exception is thrown by the create
+ * methods defined in an entity bean's home or local home interface.
+ *
+ * @since EJB 1.0
  */
 public class DuplicateKeyException extends CreateException {
 

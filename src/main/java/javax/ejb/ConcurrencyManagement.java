@@ -46,11 +46,22 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Declares a Singleton or Stateful session bean's concurrency management type.
+ * Declares a singleton session bean's concurrency management type.
  *
- * The concurrency management type for bean-managed concurrency(BEAN)
- * does not apply to stateful session beans.
+ * <p>
+ * If this annotation is not specified, the singleton bean is assumed
+ * to have container managed concurrency.
  *
+ * <p>
+ * This annotation may be applied to stateful session beans, but doing
+ * so has no impact on the semantics of concurrency management for
+ * such beans.  The concurrency management type for bean-managed
+ * concurrency (<code>BEAN</code>) does not apply to stateful session beans.
+ *
+ * @see ConcurrencyManagementType
+ * @see Lock
+ * 
+ * @since EJB 3.1
  */
 
 @Target({TYPE}) 

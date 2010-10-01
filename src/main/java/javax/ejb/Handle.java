@@ -46,6 +46,8 @@ import java.rmi.RemoteException;
  * The Handle interface is implemented by all EJB object handles. A handle
  * is an abstraction of a network reference to an EJB object. A handle is
  * intended to be used as a "robust" persistent reference to an EJB object.
+ *
+ * @since EJB 1.0
  */
 public interface Handle extends java.io.Serializable {
     /**

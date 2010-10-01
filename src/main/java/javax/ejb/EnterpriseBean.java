@@ -41,9 +41,14 @@
 package javax.ejb;
 
 /**
- * The EnterpriseBean interface must be implemented by every enterprise Bean
- * class. It is a common superinterface for the
+ * The EnterpriseBean interface is a common superinterface for the
  * SessionBean, EntityBean and MessageDrivenBean interfaces.
+ *
+ * @see SessionBean
+ * @see MessageDrivenBean
+ * @see EntityBean
+ *
+ * @since EJB 1.0
  */
 public interface EnterpriseBean extends java.io.Serializable {
 }

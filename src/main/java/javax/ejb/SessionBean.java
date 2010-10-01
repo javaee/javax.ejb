@@ -43,16 +43,20 @@ package javax.ejb;
 import java.rmi.RemoteException;
 
 /**
- * The SessionBean interface is implemented by every session enterprise Bean 
- * class. The container uses the SessionBean methods to notify the enterprise
- * Bean instances of the instance's life cycle events.
+ * The SessionBean interface defines methods that the EJB container uses
+ * to notify a session bean instance of the instance's life cycle events.
+ * <p>
+ * As of EJB 3.0 it is no longer required that a session bean class
+ * implement this interface.
+ *
+ * @since EJB 1.0
  */
 public interface SessionBean extends EnterpriseBean {
     /**
      * Set the associated session context. The container calls this method
      * after the instance creation.
      *
-     * <p> The enterprise Bean instance should store the reference to the
+     * <p> The session bean instance should store the reference to the
      * context object in an instance variable.
      *
      * <p> This method is called with no transaction context.
@@ -95,9 +99,9 @@ public interface SessionBean extends EnterpriseBean {
      void ejbRemove() throws EJBException, RemoteException;    
 
     /**
-     * The activate method is called when the instance is activated
+     * The activate method is called when a stateful session bean instance is activated
      * from its "passive" state. The instance should acquire any resource
-     * that it has released earlier in the ejbPassivate() method.
+     * that it has released earlier in the <code>ejbPassivate</code> method.
      *
      * <p> This method is called with no transaction context.
      *
@@ -115,9 +119,9 @@ public interface SessionBean extends EnterpriseBean {
     void ejbActivate() throws EJBException, RemoteException;
 
     /**
-     * The passivate method is called before the instance enters
+     * The passivate method is called before a stateful session bean instance enters
      * the "passive" state. The instance should release any resources that
-     * it can re-acquire later in the ejbActivate() method.
+     * it can re-acquire later in the <code>ejbActivate</code> method.
      *
      * <p> After the passivate method completes, the instance must be
      * in a state that allows the container to use the Java Serialization

@@ -67,6 +67,8 @@ import java.util.Map;
  *    }
  * 
  * </pre>
+ *
+ * @since Interceptors 1.0
  */
 public interface InvocationContext {
 
@@ -84,6 +86,8 @@ public interface InvocationContext {
      * with an EJB component timeout, this method returns {@link javax.ejb.Timer}
      * 
      * @return the timer object or a null value
+     *
+     * @since Interceptors 1.1
      */
     public Object getTimer();
 
@@ -138,7 +142,7 @@ public interface InvocationContext {
     /**
      * Proceed to the next interceptor in the interceptor chain.
      * Return the result of the next method invoked, or a null 
-     * value if the method has return type void, return.
+     * value if the method has return type void.
      * 
      * @return the return value of the next method in the chain
      */

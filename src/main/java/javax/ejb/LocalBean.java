@@ -47,6 +47,8 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * Designates that a session bean exposes a no-interface view.
+ *
+ * @since EJB 3.1
  */
 
 @Target({TYPE}) 

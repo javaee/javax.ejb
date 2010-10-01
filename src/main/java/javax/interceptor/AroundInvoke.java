@@ -58,21 +58,22 @@ import java.lang.annotation.Retention;
  * public Object intercept(InvocationContext ctx) throws Exception { ... }
  * </pre>
  * 
- * <p>A class may not declare more than one <tt>&#064;AroundInvoke</tt> 
+ * <p>A class must not declare more than one <tt>AroundInvoke</tt> 
  * method.</p>
  * 
- * <p>An <tt>&#064;AroundInvoke</tt> method can invoke any component or 
+ * <p>An <tt>AroundInvoke</tt> method can invoke any component or 
  * resource that the method it is intercepting can invoke.</p>
  * 
- * <p><tt>&#064;AroundInvoke</tt> method invocations occur within the same 
+ * <p><tt>AroundInvoke</tt> method invocations occur within the same 
  * transaction and security context as the method on which they are 
  * interposing.</p>
  * 
- * <p><tt>&#064;AroundInvoke</tt> methods may throw any exceptions that are 
+ * <p><tt>AroundInvoke</tt> methods may throw any exceptions that are 
  * allowed by the throws clause of the method on which they are 
  * interposing. They may catch and suppress exceptions and recover 
  * by calling {@link javax.interceptor.InvocationContext#proceed()}.</p>
  *
+ * @since Interceptors 1.0 
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

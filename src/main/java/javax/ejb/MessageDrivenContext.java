@@ -43,10 +43,12 @@ package javax.ejb;
 /**
  * The MessageDrivenContext interface provides access to the runtime 
  * message-driven context that the container provides for a message-driven
- * enterprise Bean instance. The container passes the MessageDrivenContext 
+ * bean instance. The container passes the <code>MessageDrivenContext</code>
  * interface to an instance after the instance has been created. The 
  * message-driven context remains associated with the instance for the 
  * lifetime of the instance.
+ *
+ * @since EJB 2.0
  */
 public interface MessageDrivenContext extends EJBContext
 {

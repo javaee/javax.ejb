@@ -54,6 +54,8 @@ import javax.ejb.spi.EJBContainerProvider;
 
 /** 
   * Used to execute an EJB application in an embeddable container.  
+  *
+  * @since EJB 3.1
   */
 public abstract class EJBContainer {
 
@@ -64,22 +66,26 @@ public abstract class EJBContainer {
     public static final String PROVIDER = "javax.ejb.embeddable.provider";
 
     /**
-     * Standard property name for specifying the set of modules to be initialized.  Property
-     * value is one of the following : 
-     *   -- a single module name String from the JVM classpath
-     *   -- a String[] array of module names from the JVM classpath
-     *   -- a java.io.File representing an ejb-jar or exploded ejb-jar directory
-     *   -- a java.io.File array, each element of which represents an ejb-jar 
+     * Standard property name for specifying the set of modules to be
+     * initialized.  Property value is one of the following :
+     * <ul>
+     *  <li> a single module name String from the JVM classpath
+     *  <li> a String[] array of module names from the JVM classpath
+     *  <li>  a java.io.File representing an ejb-jar or exploded ejb-jar directory
+     *  <li> a java.io.File array, each element of which represents an ejb-jar 
      *        or exploded ejb-jar directory
+     * </ul>
      */
     public static final String MODULES = "javax.ejb.embeddable.modules";
 
     /**
-     * Standard property name for specifying the application name of the EJB modules 
-     * executing within the embeddable container. If specified, the property value 
-     * applies to the <app-name> portion of the portable global JNDI name syntax. If 
-     * this property is not specified, the <app-name> portion of the portable global 
-     * JNDI name syntax does not apply.
+     * Standard property name for specifying the application name of
+     * the EJB modules executing within the embeddable container. If
+     * specified, the property value applies to the
+     * <code>&#060;app-name&#062;</code> portion of the portable
+     * global JNDI name syntax. If this property is not specified, the
+     * <code>&#060;app-name&#062;</code> portion of the portable
+     * global JNDI name syntax does not apply.
      */
     public static final String APP_NAME = "javax.ejb.embeddable.appName";
 
@@ -100,8 +106,9 @@ public abstract class EJBContainer {
      * Create and initialize an embeddable EJB container with a
      * set of configuration properties.
      *
-     * @param properties  Spec-defined and/or vendor-specific properties.
-     * The spec reserves the prefix "javax.ejb." for spec-defined properties.
+     * @param properties Spec-defined and/or vendor-specific
+     * properties.  The spec reserves the prefix
+     * <code>"javax.ejb."</code> for spec-defined properties.
      *
      * @return EJBContainer instance
      *
@@ -151,7 +158,7 @@ public abstract class EJBContainer {
 
     /**
      * Shutdown an embeddable EJBContainer instance.  Embeddable applications
-     * should always call close() in order to free up the resources
+     * should always call <code>close()</code> in order to free up the resources
      * associated with the embeddable container.   
      */
     abstract public void close(); 
@@ -165,9 +172,14 @@ public abstract class EJBContainer {
      * Create a meaningful EJBException in case no EJBContainer provider had
      * been found.
      *
-     * @param properties the properties passed as an argument to createEJBContainer() method
-     * @param errors the Map of errors encountered during createEJBContainer() call
-     * @param returnedNull the Set of providers that returned null on createEJBContainer() call
+     * @param properties the properties passed as an argument to the
+     * createEJBContainer() method
+     *
+     * @param errors the Map of errors encountered during the createEJBContainer() call
+     *
+     * @param returnedNull the Set of providers that returned null on
+     * createEJBContainer() call
+     *
      * @throws EJBException
      */
     private static void reportError(Map<?,?> properties, Map<String, String> errors, 

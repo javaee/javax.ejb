@@ -43,23 +43,25 @@ package javax.ejb;
 import java.rmi.RemoteException;
 
 /**
- * The EJBHome interface must be extended by all enterprise
- * Beans' remote home interfaces. An enterprise Bean's remote home interface 
- * defines the
- * methods that allow a remote client to create, find, and remove EJB objects,
- * as well as home business methods that
- * are not specific to a bean instance (Session Beans do not have
- * finders and home methods).
-
- * <p> The remote home interface is defined by the enterprise Bean provider and 
- * implemented by the enterprise Bean container.
+ * The EJBHome interface must be extended by all enterprise beans'
+ * remote home interfaces. An enterprise bean's remote home interface
+ * defines the methods that allow a remote client to create, find, and
+ * remove EJB objects.
+ *
+ * <p> The remote home interface is defined by the enterprise bean provider and 
+ * implemented by the enterprise bean container.
+ * <p>
+ * Enterprise beans written to the EJB 3.0 and later APIs do not require
+ * a home interface.
+ *
+ * @since EJB 1.0
  */
 public interface EJBHome extends java.rmi.Remote {
 
     /**
      * Remove an EJB object identified by its handle.
      *
-     * @exception RemoveException Thrown if the enterprise Bean or
+     * @exception RemoveException Thrown if the enterprise bean or
      *    the container does not allow the client to remove the object.
      *
      * @exception RemoteException Thrown when the method failed due to a
@@ -73,7 +75,7 @@ public interface EJBHome extends java.rmi.Remote {
      * <p>This method can be used only for an entity bean. An attempt
      * to call this method on a session bean will result in a RemoveException.
      *
-     * @exception RemoveException Thrown if the enterprise Bean or
+     * @exception RemoveException Thrown if the enterprise bean or
      *    the container does not allow the client to remove the object.
      *
      * @exception RemoteException Thrown when the method failed due to a
@@ -82,9 +84,9 @@ public interface EJBHome extends java.rmi.Remote {
     void remove(Object primaryKey) throws RemoteException, RemoveException;
 
     /**
-     * Obtain the EJBMetaData interface for the enterprise Bean. The
+     * Obtain the EJBMetaData interface for the enterprise bean. The
      * EJBMetaData interface allows the client to obtain information about
-     * the enterprise Bean.
+     * the enterprise bean.
      *
      * <p> The information obtainable via the EJBMetaData interface is
      * intended to be used by tools.
@@ -104,7 +106,9 @@ public interface EJBHome extends java.rmi.Remote {
      * @return A handle for the remote home object.
      *
      * @exception RemoteException Thrown when the method failed due to a
-     *    system-level failure.     
+     *    system-level failure. 
+     *
+     * @since EJB 1.1    
      */
     HomeHandle getHomeHandle() throws RemoteException;
 }

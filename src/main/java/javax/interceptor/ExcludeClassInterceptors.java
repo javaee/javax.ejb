@@ -56,6 +56,8 @@ import java.lang.annotation.Retention;
  * </pre>
  * 
  * @see javax.interceptor.ExcludeClassInterceptors
+ *
+ * @since Interceptors 1.0
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

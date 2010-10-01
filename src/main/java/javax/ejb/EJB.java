@@ -47,17 +47,18 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * Indicates a dependency on the local, no-interface, or remote view of an Enterprise
- * Java Bean.
- *
- *
- * Either beanName() or lookup() can be used to resolve the EJB dependency
- * to its target session bean component.  It is an error to specify values for
- * both beanName() and lookup().
- *
+ * JavaBean.
+ * <p>
+ * Either the <code>beanName</code> or the <code>lookup</code> element can 
+ * be used to resolve the EJB dependency to its target session bean component.  
+ * It is an error to specify values for both <code>beanName</code> and 
+ * <code>lookup</code>.
+ * <p>
  * If no explicit linking information is provided and there is only one session
  * bean within the same application that exposes the matching client view type,
  * by default the EJB dependency resolves to that session bean.
  *
+ * @since EJB 3.0
  */
 
 @Target({TYPE, METHOD, FIELD})
@@ -70,6 +71,9 @@ public @interface EJB {
      */
     String name() default "";
 
+    /**
+     * A string describing the bean.
+     */
     String description() default "";
 
     /**
@@ -81,28 +85,32 @@ public @interface EJB {
 
     /**
      * Holds one of the following types of the target EJB :
-     *  [ Local business interface, bean class (for no-interface view),
-     *    Remote business interface, 
-     *    Local Home interface, Remote Home interface ]
-     *  
+     * <ul>
+     * <li> Local business interface
+     * <li> Bean class (for no-interface view)
+     * <li> Remote business interface
+     * <li> Local Home interface
+     * <li> Remote Home interface
+     * </ul>
      */
     Class beanInterface() default Object.class;
 
     /**
-      * The product specific name of the EJB component to which this
-      * ejb reference should be mapped.  This mapped name is often a
-      * global JNDI name, but may be a name of any form. 
-      * 
-      * Application servers are not required to support any particular 
-      * form or type of mapped name, nor the ability to use mapped names. 
-      * The mapped name is product-dependent and often installation-dependent. 
-      * No use of a mapped name is portable. 
-      */ 
+     * The product specific name of the EJB component to which this
+     * ejb reference should be mapped.  This mapped name is often a
+     * global JNDI name, but may be a name of any form. 
+     * <p>
+     * Application servers are not required to support any particular 
+     * form or type of mapped name, nor the ability to use mapped names. 
+     * The mapped name is product-dependent and often installation-dependent. 
+     * No use of a mapped name is portable. 
+     */ 
     String mappedName() default "";
 
     /**
-      * A portable lookup string containing the JNDI name for the target EJB component. 
-      *
-      */ 
+     * A portable lookup string containing the JNDI name for the target EJB component. 
+     *
+     * @since EJB 3.1
+     */ 
     String lookup() default "";
 }

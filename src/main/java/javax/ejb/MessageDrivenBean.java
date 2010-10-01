@@ -41,17 +41,21 @@
 package javax.ejb;
 
 /**
- * The MessageDrivenBean interface is implemented by every message-driven
- * enterprise Bean class. The container uses the MessageDrivenBean methods
- * to notify the enterprise Bean instances of the instance's life cycle 
+ * The MessageDrivenBean interface defines methods that the EJB container uses
+ * to notify a message driven bean instance of the instance's life cycle 
  * events.
+ * <p>
+ * As of EJB 3.0 it is no longer required that a message driven bean class
+ * implement this interface.
+ *
+ * @since EJB 2.0
  */
 public interface MessageDrivenBean extends EnterpriseBean {
     /**
      * Set the associated message-driven context. The container calls 
      * this method after the instance creation.
      *
-     * <p> The enterprise Bean instance should store the reference to the
+     * <p> The message driven bean instance should store the reference to the
      * context object in an instance variable.
      *
      * <p> This method is called with no transaction context.

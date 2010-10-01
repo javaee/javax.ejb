@@ -55,14 +55,16 @@ import java.lang.annotation.Target;
  * public class ValidationInterceptor { ... }
  * </pre>
  * 
- * <p>This annotation is optional if 
- * {@link javax.interceptor.Interceptors &#064;Interceptors} or 
+ * <p>This annotation is optional if the
+ * {@link javax.interceptor.Interceptors Interceptors} annotation or 
  * the EJB deployment descriptor are used to associate the 
  * interceptor with the target class. It is required when an
  * {@linkplain javax.interceptor.InterceptorBinding interceptor binding}
  * is used.</p>
  * 
  * @see javax.interceptor.Interceptors
+ *
+ * @since Interceptors 1.1
  */
 @Retention(RUNTIME)
 @Target(TYPE)

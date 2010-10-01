@@ -42,10 +42,12 @@ package javax.ejb;
 
 /**
  * The FinderException exception must be included in the throws clause
- * of every findMETHOD(...) method of an entity Bean's home interface.
+ * of every finder method of an entity bean's home or local home interface.
  *
  * <p> The exception is used as a standard application-level exception to 
  * report a failure to find the requested EJB object(s).
+ *
+ * @since EJB 1.0
  */
 public class FinderException extends java.lang.Exception {
 

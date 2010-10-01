@@ -42,25 +42,28 @@ package javax.ejb;
 
 /**
  * The EJBLocalHome interface must be extended by all enterprise
- * Beans' local home interfaces. An enterprise Bean's local home
+ * beans' local home interfaces. An enterprise bean's local home
  * interface defines the methods that allow local clients to create, 
- * find, and remove EJB objects, as well as home business methods that
- * are not specific to a bean instance (session Beans do not have
- * finders and home business methods).
+ * find, and remove EJB objects.
  *
- * <p> The local home interface is defined by the enterprise Bean provider
- * and implemented by the enterprise Bean container.
+ * <p> The local home interface is defined by the enterprise bean provider
+ * and implemented by the enterprise bean container.
+ * <p>
+ * Enterprise beans written to the EJB 3.0 and later APIs do not require
+ * a local home interface.
+ *
+ * @since EJB 2.0
  */
 public interface EJBLocalHome {
 
     /**
      * Remove an EJB object identified by its primary key.
      *
-     * <p>This method can only be used by local clients of an entity bean.
-     * An attempt
-     * to call this method on a session bean will result in a RemoveException.
+     * <p>This method can only be used by local clients of an entity
+     * bean.  An attempt to call this method on a session bean will
+     * result in a RemoveException.
      *
-     * @exception RemoveException Thrown if the enterprise Bean or
+     * @exception RemoveException Thrown if the enterprise bean or
      *    the container does not allow the client to remove the object.
      *
      * @exception EJBException Thrown when the method failed due to a

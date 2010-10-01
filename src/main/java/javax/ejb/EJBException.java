@@ -41,10 +41,12 @@
 package javax.ejb;
 
 /**
- * The EJBException exception is thrown by an enterprise Bean instance to 
- * its container to report that the invoked business method or callback method
- * could not be completed because of an unexpected error (e.g. the instance 
- * failed to open a database connection).
+ * The EJBException is thrown to report that the invoked
+ * business method or callback method could not be completed because
+ * of an unexpected error (e.g. the instance failed to open a database
+ * connection).
+ *
+ * @since EJB 1.1
  */
 public class EJBException extends java.lang.RuntimeException {
     

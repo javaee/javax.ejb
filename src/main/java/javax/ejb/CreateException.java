@@ -42,15 +42,17 @@ package javax.ejb;
 
 /**
  * The CreateException exception must be included in the throws clauses of
- * all create methods defined in an enterprise Bean's home 
+ * all create methods defined in an enterprise bean's home or local home
  * interface. 
  *
  * <p> This exception is used as a standard application-level exception to
- * report a failure to create an EJB object.
+ * report a failure to create an EJB object or local object.
+ *
+ * @since EJB 1.0
  */
 public class CreateException extends java.lang.Exception {
 
-    private static final long serialVersionUID = 7899534274371798660L;
+    private static final long serialVersionUID = 6295951740865457514L;
 
     /**
      * Constructs a CreateException with no detail message.

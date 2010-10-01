@@ -53,6 +53,8 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * Component-defining annotation for a stateless session bean.
+ *
+ * @since EJB 3.0
  */
 
 @Target(TYPE) 
@@ -60,7 +62,8 @@ import static java.lang.annotation.RetentionPolicy.*;
 public @interface Stateless {
 
     /**
-     * ejb-name for this bean.
+     * The ejb-name for this bean.  Defaults to the unqualified name of the
+     * stateless session bean class.
      */
     String name() default "";
 
@@ -75,5 +78,8 @@ public @interface Stateless {
       */ 
     String mappedName() default "";
 
+    /**
+     * A string describing the stateless session bean.
+     */ 
     String description() default "";
 }

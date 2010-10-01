@@ -47,9 +47,11 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 
 /**
- * Applied to a business method of a stateful session bean class.  Indicates
- * that the stateful session bean is to be removed by the container after
- * completion of the method.
+ * Applied to a business method of a stateful session bean class to indicate
+ * to the container that the stateful session bean is to be removed by the
+ * container after completion of the method.
+ *
+ * @since EJB 3.0
  */
 
 @Target({ElementType.METHOD})

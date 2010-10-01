@@ -43,6 +43,8 @@ package javax.ejb;
 /**
  * This exception indicates that a calendar-based timer will not
  * result in any more timeouts.
+ *
+ * @since EJB 3.1
  */
 public class NoMoreTimeoutsException extends EJBException {
 

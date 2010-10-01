@@ -63,8 +63,8 @@ import java.lang.annotation.Target;
  * interceptors with target beans.</p>
  * 
  * <p>The interceptor bindings of an interceptor are specified by annotating 
- * the interceptor class with the binding types and 
- * {@link javax.interceptor.Interceptor &#064;Interceptor}.</p>
+ * the interceptor class with the binding types and the
+ * {@link javax.interceptor.Interceptor Interceptor} annotation.</p>
  * 
  * <pre>
  * &#064;Valid &#064;Interceptor
@@ -106,6 +106,8 @@ import java.lang.annotation.Target;
  * binding types that declare that interceptor binding type.</p>
  * 
  * @see javax.interceptor.Interceptor
+ *
+ * @since Interceptors 1.1
  */
 @Target(ANNOTATION_TYPE)
 @Retention(RUNTIME)

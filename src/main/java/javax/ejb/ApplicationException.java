@@ -47,7 +47,9 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * Applied to an exception to denote that it is an application exception
- * and should be reported to the client directly(i.e., unwrapped).
+ * and should be reported to the client directly (i.e., unwrapped).
+ *
+ * @since EJB 3.0
  */
 
 @Target(TYPE) 
@@ -63,6 +65,8 @@ public @interface ApplicationException {
     /**
      * Indicates whether the application exception designation should
      * apply to subclasses of the annotated exception class.
+     *
+     * @since EJB 3.1
      */
     boolean inherited() default true;
 

@@ -41,13 +41,15 @@
 package javax.ejb;
 
 /**
- * The ObjectNotFoundException exception is thrown by a finder method to
- * indicate that the specified EJB object does not exist.
+ * The ObjectNotFoundException exception is thrown by a finder or select method to
+ * indicate that the specified EJB object or local object does not exist.
  *
- * <p> Only the finder methods that are declared to return a single EJB object
- * use this exception. This exception should not be thrown by finder methods
- * that return a collection of EJB objects (they should return an empty 
- * collection instead).
+ * <p> Only the finder and select methods that are declared to return
+ * a single object use this exception. This exception should not be
+ * thrown by finder or select methods that return a collection of
+ * objects (they should return an empty collection instead).
+ *
+ * @since EJB 1.0
  */
 public class ObjectNotFoundException extends FinderException {
 

@@ -45,6 +45,37 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+
+/**
+ * Used to provide information to the deployer about the configuration of
+ * a message driven bean in its operational environment.
+ * <p>
+ * The following standard properties are recognized for JMS message driven
+ * beans:
+ * <ul>
+ * <li> <code>acknowledgeMode</code>.  This property is used to specify
+ * the JMS acknowledgement mode for the message delivery when bean-managed 
+ * transaction demarcation is used.
+ * Its values are <code>Auto_acknowledge</code> or <code>Dups_ok_acknowledge</code>.  
+ * If this property is not specified, JMS auto acknowledge semantics are assumed.
+ *
+ * <li> <code>messageSelector</code>.  This property is used to specify
+ * the JMS message selector to be used in determining which messages a
+ * JMS message driven bean is to receive.
+ *
+ * <li> <code>destinationType</code>.  This property is used to specify
+ * whether the message driven bean is intended to be used with a queue or
+ * a topic.  The value must be either <code>javax.jms.Queue</code> or
+ * <code>javax.jms.Topic</code>.
+ *
+ * <li> <code>subscriptionDurability</code>.  If the message driven bean is
+ * intended to be used with a topic, this property may be used to indicate
+ * whether a durable or non-durable subscription should be used.   The
+ * value of this property must be either <code>Durable</code> or <code>NonDurable</code>
+ * </ul>
+ *
+ * @since EJB 3.0
+ */
 @Target({})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ActivationConfigProperty {

@@ -40,7 +40,24 @@
 
 package javax.ejb;
 
+/**
+ * The enum <code>TransactionManagementType</code> is used with the
+ * <code>TransactionManagement</code> annotation to specify whether
+ * container-managed or bean-managed transaction management is used.
+ *
+ * @see TransactionManagement
+ *
+ * @since EJB 3.0
+ */
 public enum TransactionManagementType {
+
+    /**
+     * Container-managed transaction management is used.
+     */
     CONTAINER,
+
+    /**
+     * Bean-managed transaction management is used.
+     */
     BEAN
 }

@@ -61,6 +61,7 @@ import java.lang.annotation.Retention;
  * public void updateOrder(Order order) { ... }
  * </pre>
  * 
+ * @since Interceptors 1.0
  */
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

@@ -47,17 +47,34 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 
 /**
- * Declares the Remote Home interface or adapted Remote Home interface
- * for a session bean.  The value is never a 2.x Remote Component interface.
- * 
- * In the case of an adapted Remote Home interface, the Remote Component
- * interface is derived from the return type of Remote Home interface's
+ * Declares the remote home interface or adapted remote home interface
+ * for a session bean.  The value is never a 2.x remote component interface.
+ * <p>
+ * Clients written to the EJB 2.1 and earlier client view depend upon the 
+ * existence of a home and component interface.
+ * A session bean written to the EJB 3.x API may be adapted to such earlier 
+ * preexisting client view interfaces.
+ * <p>
+ * The session bean designates the home interface to be adapted by using 
+ * the <code>RemoteHome</code> annotation on the bean class.  The corresponding 
+ * remote component interface need not be explicitly specified, as it is
+ * derived from the return type of remote home interface's
  * create method signature.
+ * <p>
+ * Session beans written to the EJB 3.0 and later APIs do not otherwise make
+ * use of remote home interfaces.
  *
+ * @see Init
+ * @see LocalHome
+ *
+ * @since EJB 3.0
  */
-
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RemoteHome {
+ 
+    /**
+     * The remote home interface
+     */
     Class value(); 
 } 

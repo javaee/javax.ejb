@@ -58,25 +58,26 @@ import java.lang.annotation.Retention;
  * public Object interceptTimeout(InvocationContext ctx) throws Exception { ... }
  * </pre>
  * 
- * <p>A class may not declare more than one <tt>&#064;AroundTimeout</tt> 
+ * <p>A class must not declare more than one <tt>AroundTimeout</tt> 
  * method.</p>
  * 
- * <p>An <tt>&#064;AroundTimeout</tt> method can invoke any component or 
+ * <p>An <tt>AroundTimeout</tt> method can invoke any component or 
  * resource that its corresponding timeout method can invoke.</p>
  * 
  * <p>{@link javax.interceptor.InvocationContext#getTimer()} allows any 
- * <tt>&#064;AroundTimeout</tt> method to retrieve the timer object 
+ * <tt>AroundTimeout</tt> method to retrieve the timer object 
  * associated with the timeout.</p>
  * 
- * <p><tt>&#064;AroundTimeout</tt> method invocations occur within the same 
+ * <p><tt>AroundTimeout</tt> method invocations occur within the same 
  * transaction and security context as the timeout method on which they are 
  * interposing.</p>
  * 
- * <p><tt>&#064;AroundTimeout</tt> methods may throw any exceptions that are 
+ * <p><tt>AroundTimeout</tt> methods may throw any exceptions that are 
  * allowed by the throws clause of the timeout method on which they are 
  * interposing. They may catch and suppress exceptions and recover 
  * by calling {@link javax.interceptor.InvocationContext#proceed()}.</p>
  *
+ * @since Interceptors 1.1
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

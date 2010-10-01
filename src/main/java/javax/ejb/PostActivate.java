@@ -49,6 +49,16 @@ import java.lang.annotation.Retention;
 /**
  * Designates a method to receive a callback after a stateful session
  * bean has been activated.
+ * <p>
+ * The method to which this annotation is applied must have the
+ * following signature.
+ * <pre>
+ * void &#060;METHOD&#062;()
+ * </pre>
+ * The method can have public, private, protected, or package level access. 
+ * It must not be declared as final or static.
+ *
+ * @since EJB 3.0
  */
 
 @Target({ElementType.METHOD})

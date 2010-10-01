@@ -46,6 +46,8 @@ import java.rmi.RemoteException;
  * The HomeHandle interface is implemented by all home object handles. A handle
  * is an abstraction of a network reference to a home object. A handle is
  * intended to be used as a "robust" persistent reference to a home object.
+ *
+ * @since EJB 1.1
  */
 public interface HomeHandle extends java.io.Serializable {
     /**

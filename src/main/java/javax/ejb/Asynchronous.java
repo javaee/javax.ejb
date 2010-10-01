@@ -46,8 +46,20 @@ import java.lang.annotation.Retention;
 import static java.lang.annotation.RetentionPolicy.*;
 
 /**
- * Used to mark a method as an asynchronous method or to designate all business 
- * methods of a class or interface as asynchronous. 
+ * Used to mark a session bean method as an asynchronous method or to designate all 
+ * business methods of a session bean class as asynchronous. 
+ * <p>
+ * An asychronous method must have return type <code>void</code>
+ * or <code>Future&#060;V&#062;</code>, where <code>V</code> is the result value type.
+ * <p>
+ * Asynchronous method invocation semantics only apply to the no-interface, 
+ * local business, and remote business client views.   Methods exposed 
+ * through the EJB 2.x local, EJB 2.x remote, and web service client views 
+ * must not be designated as asynchronous.
+ *
+ * @see AsyncResult
+ *
+ * @since EJB 3.1
  */
 
 @Target({METHOD, TYPE}) 

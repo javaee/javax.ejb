@@ -44,17 +44,18 @@ import java.io.Serializable;
 import java.util.concurrent.*;
 
 /**
-  * Wraps the result of an asynchronous method call as a Future
+  * Wraps the result of an asynchronous method call as a <code>Future</code>
   * object, preserving compatability with the business interface signature.
-  *
+  * <p>
   * The value specified in the constructor will be retrieved by the container
   * and made available to the client.
-  *
+  * <p>
   * Note that this object is not passed to the client.  It is
   * merely a convenience for providing the result value to the container.
   * Therefore, none of its instance methods should be called by the 
   * application.
   *
+  * @since EJB 3.1
   */
 
 public final class AsyncResult<V> implements Future<V> {

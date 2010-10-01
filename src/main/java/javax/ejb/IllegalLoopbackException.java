@@ -43,8 +43,10 @@ package javax.ejb;
 /**
  * This exception indicates that an attempt was made to perform an
  * illegal loopback invocation.   One possible cause is a loopback
- * call to a Singleton container-managed concurrency WRITE method 
- * where the current thread does not already hold a WRITE lock.
+ * call to a singleton bean's container-managed concurrency <code>Lock(WRITE)</code> 
+ * method where the current thread does not already hold a <code>WRITE</code> lock.
+ *
+ * @since EJB 3.1
  */
 public class IllegalLoopbackException extends ConcurrentAccessException {
 

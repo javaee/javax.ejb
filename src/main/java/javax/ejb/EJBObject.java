@@ -43,26 +43,32 @@ package javax.ejb;
 import java.rmi.RemoteException;
 
 /**
- * The EJBObject interface is extended by all enterprise Beans' remote 
- * interfaces. An enterprise Bean's remote interface provides the remote
- * client view
- * of an EJB object. An enterprise Bean's remote interface defines 
- * the business methods callable by a remote client.
+ * The EJBObject interface is extended by all enterprise beans' remote
+ * interfaces. An enterprise bean's remote interface provides the
+ * remote client view of an EJB object. An enterprise bean's remote
+ * interface defines the business methods callable by a remote client.
  *
- * <p> The remote interface must
- * extend the javax.ejb.EJBObject interface, and define the enterprise Bean
- * specific business methods.
+ * <p> The remote interface must extend the javax.ejb.EJBObject
+ * interface, and define the enterprise bean specific business
+ * methods.
  *
- * <p> The enterprise Bean's remote interface is defined by the enterprise
- * Bean provider and implemented by the enterprise Bean container.
+ * <p> The enterprise bean's remote interface is defined by the enterprise
+ * bean provider and implemented by the enterprise bean container.
+ *
+ * <p>
+ * Enterprise beans written to the EJB 3.0 and later APIs do not require
+ * a remote interface that extends the EJBObject interface.  A remote
+ * business interface can be used instead.
+ *
+ * @since EJB 1.0
  */
 public interface EJBObject extends java.rmi.Remote {
     /**
-     * Obtain the enterprise Bean's remote home interface. The remote home 
-     * interface defines the enterprise Bean's create, finder, remove,
+     * Obtain the enterprise bean's remote home interface. The remote home 
+     * interface defines the enterprise bean's create, finder, remove,
      * and home business methods.
      * 
-     * @return A reference to the enterprise Bean's home interface.
+     * @return A reference to the enterprise bean's home interface.
      *
      * @exception RemoteException Thrown when the method failed due to a
      *    system-level failure.
@@ -88,7 +94,7 @@ public interface EJBObject extends java.rmi.Remote {
      * @exception RemoteException Thrown when the method failed due to a
      *    system-level failure.
      *
-     * @exception RemoveException The enterprise Bean or the container
+     * @exception RemoveException The enterprise bean or the container
      *    does not allow destruction of the object.
      */ 
     public void remove() throws RemoteException, RemoveException;

@@ -47,21 +47,53 @@ import java.lang.annotation.Target;
 import java.lang.annotation.Retention;
 
 /**
- * Designates a method of a session bean that corresponds to the 
- * create<METHOD> method of an adapted Home interface or an adapted Local 
- * Home interface.  
+ * Designates a method of a session bean that corresponds to a
+ * <code>create&#060;METHOD&#062;</code> method of an adapted home or
+ * local home interface (an interface that adapts an EJB 2.1 or earlier
+ * EJBHome or EJBLocalHome client view respectively).
+ *
+ * <p> The result type of such an <code>Init</code> method is required
+ * to be <code>void</code>, and its parameter types must be exactly the same as
+ * those of the referenced <code>create&#060;METHOD&#062;</code>
+ * method(s).
+ *
+ * <p>
+ * An <code>Init</code> method is only required to be specified for
+ * stateful session beans that provide a <code>RemoteHome</code> or
+ * <code>LocalHome</code> interface. 
+ *
+ * <p> The name of the adapted <code>create&#060;METHOD&#062;</code>
+ * method of the home or local home interface must be specified if the
+ * adapted interface has more than one
+ * <code>create&#060;METHOD&#062;</code> method and the method
+ * signatures are not the same.
+ *
+ * @see LocalHome
+ * @see RemoteHome
+ *
+ * @since EJB 3.0
  */
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Init {
 
     /**
-     * The name of the corresponding create<METHOD> method of the adapted
-     * Home/LocalHome interface.  This value is used to disambiguate the
-     * case where there are multiple create<METHOD> methods on an
-     * adapted Home/LocalHome interface with the same signature as the
-     * annotated @Init method.  If no value is specified, the create<METHOD>
-     * matching is based on signature only.
+     * The name of the corresponding
+     * <code>create&#060;METHOD&#062;</code> method of the adapted
+     * home or local home interface.  This value is used to
+     * disambiguate the case where there are multiple
+     * <code>create&#060;METHOD&#062;</code> methods on an adapted
+     * home and/or local home interface.  If there are multiple
+     * <code>create&#060;METHOD&#062;</code> methods on the adapted
+     * interface(s) and no value is specified, the
+     * <code>create&#060;METHOD&#062;</code> matching is based on
+     * signature only.
+     * <p>
+     * Note that this value is not required to be specified if there
+     * is only a single <code>create&#060;METHOD&#062;</code> method
+     * even if the name of the method to which the <code>Init</code>
+     * annotation is applied does not match that of the
+     * <code>create&#060;METHOD&#062;</code> method.
      */
     String value() default "";
 

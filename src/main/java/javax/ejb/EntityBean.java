@@ -44,9 +44,16 @@ import java.rmi.RemoteException;
 
 
 /**
- * The EntityBean interface is implemented by every entity enterprise Bean 
- * class. The container uses the EntityBean methods to notify the enterprise
- * Bean instances of the instance's life cycle events.
+ * The EntityBean interface is implemented by every entity bean 
+ * class. The container uses the EntityBean methods to notify the entity
+ * bean instances of the instance's life cycle events.
+ *
+ * <p>
+ * Applications written to the EJB 3.0 and later APIs should use the facilities
+ * of the Java Persistence API (<code>javax.persistence</code>) to model
+ * persistent entities.
+ *
+ * @since EJB 1.0
  */
 public interface EntityBean extends EnterpriseBean {
     /**
@@ -99,7 +106,7 @@ public interface EntityBean extends EnterpriseBean {
      * A container invokes this method before it removes the EJB object
      * that is currently associated with the instance. This method
      * is invoked when a client invokes a remove operation on the
-     * enterprise Bean's home interface or the EJB object's remote interface.
+     * entity bean's home interface or the EJB object's remote interface.
      * This method transitions the instance from the ready state to the pool 
      * of available instances.
      * 

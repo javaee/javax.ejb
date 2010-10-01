@@ -45,9 +45,10 @@ import java.util.Date;
 
 /**
  *
- * The Timer interface contains information about a timer
+ * The <code>Timer</code> interface contains information about a timer
  * that was created through the EJB Timer Service.
  *
+ * @since EJB 2.1
  */
 public interface Timer {
 
@@ -113,7 +114,11 @@ public interface Timer {
     public Date getNextTimeout() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.NoMoreTimeoutsException, javax.ejb.EJBException;
 
     /**
-     * Get the schedule expression corresponding to this timer.
+     * Get the schedule expression corresponding to this timer.  The timer
+     * must be a calendar-based timer.  It may have been created automatically
+     * or programmatically.
+     *
+     * @return schedule expression for the timer.
      *
      * @exception java.lang.IllegalStateException If this method is
      * invoked while the instance is in a state that does not allow access 
@@ -125,48 +130,55 @@ public interface Timer {
      * 
      * @exception javax.ejb.EJBException If this method could not complete due
      * to a system-level failure.
+     *
+     * @since EJB 3.1
      */
     public ScheduleExpression getSchedule() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.EJBException;
 
     /**
-     * Query whether this timer has persistent semantics.
+     * Return whether this timer has persistent semantics.
      *
+     * @return boolean indicating whether the timer is persistent.
+
      * @exception java.lang.IllegalStateException If this method is
      * invoked while the instance is in a state that does not allow access 
      * to this method. 
-     *
-     * @return true if this timer has persistent guarantees.  
-     * @return false if this is a non-persistent timer. 
      * 
      * @exception javax.ejb.NoSuchObjectLocalException If invoked on a timer
      * that has expired or has been cancelled.
      * 
      * @exception javax.ejb.EJBException If this method could not complete due
      * to a system-level failure.
+     *
+     * @since EJB 3.1
      */
     public boolean isPersistent() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.EJBException;    
 
     /**
-     * Query whether this timer is a calendar-based timer.  
+     * Return whether this timer is a calendar-based timer.  
+     *
+     * @return boolean indicating whether the timer is calendar-based.
      *
      * @exception java.lang.IllegalStateException If this method is
      * invoked while the instance is in a state that does not allow access 
      * to this method. 
      *
-     * @return true if this timer is a calendar-based timer.  
-     * @return false if this is not a calendar-based timer. 
-     * 
      * @exception javax.ejb.NoSuchObjectLocalException If invoked on a timer
      * that has expired or has been cancelled.
      * 
      * @exception javax.ejb.EJBException If this method could not complete due
      * to a system-level failure.
+     *
+     * @since EJB 3.1
      */
     public boolean isCalendarTimer() throws java.lang.IllegalStateException, javax.ejb.NoSuchObjectLocalException, javax.ejb.EJBException;    
 
 
     /**
-     * Get the information associated with the timer at the time of creation.
+     * Get the information associated with the timer at the time of
+     * creation.  This may be the <code>info</code> string that was
+     * passed to the timer creation method or the <code>info</code>
+     * element of the <code>Schedule</code> annotaiton.
      *
      * @return The Serializable object that was passed in at timer creation, or
      * null if the info argument passed in at timer creation was null.

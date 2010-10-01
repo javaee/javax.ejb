@@ -49,23 +49,44 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Specifies the amount of time a stateful session bean can
- * be idle ( not receive any client invocations ) before it
+ * be idle (not receive any client invocations) before it
  * is eligible for removal by the container.
- *
- * A value of 0 means the bean is immediately eligible for removal.
- *
- * A value of -1 means the bean will never be removed due to timeout.
- *
+ * <p>
+ * 
+ * The semantics of the <code>value</value> element are as follows:
+ * <ul>
+ * <li>A value <code>&#062;</code>0 indicates a timeout value in the units
+ * specified by the <code>unit</code> element.
+ * <li>A value of 0 means the bean is immediately eligible for removal.
+ * <li>A value of -1 means the bean will never be removed due to timeout.
+ * </ul>
  * Values less than -1 are not valid.
  * 
+ * @since EJB 3.1
  */
 
 @Target(TYPE) 
 @Retention(RUNTIME)
 public @interface StatefulTimeout {
 
+    /**
+     * The amount of time the stateful session bean can be idle.
+     *
+     * The semantics of this element are as follows:
+     * <ul>
+     * <li>A value <code>&#062;</code>0 indicates a timeout value in the units
+     * specified by the <code>unit</code> element.
+     * <li>A value of 0 means the bean is immediately eligible for removal.
+     * <li>A value of -1 means the bean will never be removed due to timeout.
+     * </ul>
+     * Values less than -1 are not valid.
+     * 
+     */
     long value();
 
+    /**
+     * Units used for the specified value.
+     */
     TimeUnit unit() default TimeUnit.MINUTES;
 
 }
