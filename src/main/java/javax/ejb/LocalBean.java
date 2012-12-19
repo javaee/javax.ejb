@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2006-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2006-2012 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -47,6 +47,14 @@ import static java.lang.annotation.RetentionPolicy.*;
 
 /**
  * Designates that a session bean exposes a no-interface view.
+ * <p>
+ * This annotation is required if a session bean exposes any other client views 
+ * (local, remote, no-interface, 2.x Remote Home, 2.x Local Home, Web 
+ * Service) in addition to the no-interface view or its implements clause contains 
+ * an interface other than <code>java.io.Serializable</code>; <code>java.io.Externalizable</code>; 
+ * or any of the interfaces defined by the <code>javax.ejb</code> package.
+ * <p>
+ * This annotation is optional if a session bean exposes only a no-interface view.
  *
  * @since EJB 3.1
  */

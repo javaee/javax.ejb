@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2006-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2006-2012 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -356,7 +356,8 @@ public interface TimerService {
                java.lang.IllegalStateException, javax.ejb.EJBException;
 
     /**
-     * Get all the active timers associated with this bean.
+     * Returns all active timers associated with this bean. These include both the 
+     * programmatically-created timers and the automatically-created timers.
      *
      * @return a collection of <code>javax.ejb.Timer</code> objects.
      *
@@ -371,6 +372,23 @@ public interface TimerService {
     public Collection<Timer> getTimers() throws java.lang.IllegalStateException,
         javax.ejb.EJBException;
 
-
+    /**
+     * Returns all active timers associated with the beans in the same module in 
+     * which the caller bean is packaged. These include both the
+     * programmatically-created timers and the automatically-created timers.
+     *
+     * @return a collection of <code>javax.ejb.Timer</code> objects.
+     *
+     * @exception java.lang.IllegalStateException If this method is
+     * invoked while the instance is in a state that does not allow access
+     * to this method.
+     *
+     * @exception javax.ejb.EJBException If this method could not complete
+     * due to a system-level failure.
+     *
+     * @since EJB 3.2
+     */
+    public Collection<Timer> getAllTimers() throws java.lang.IllegalStateException,
+        javax.ejb.EJBException;
 
 } 
