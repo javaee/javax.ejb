@@ -230,7 +230,6 @@
                                     <packages>javax.ejb</packages>
                                 </group>
                             </groups>
-                            <bottom>Portions Copyright &amp;copy; 1999-2002 The Apache Software Foundation.  All Rights Reserved. Portions Copyright &amp;copy; 2005-2011 Oracle and/or its affiliates.  All Rights Reserve</bottom>
                         </configuration>
                     </execution>
                 </executions>
@@ -277,4 +276,12 @@
             </plugin>
         </plugins>
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>javax.xml</groupId>
+            <artifactId>jaxrpc-api</artifactId>
+            <optional>true</optional>
+            <version>1.1</version>
+        </dependency>
+    </dependencies>    
 </project>
