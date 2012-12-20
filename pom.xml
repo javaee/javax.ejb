@@ -64,7 +64,7 @@
         <findbugs.exclude>exclude.xml</findbugs.exclude>
         <findbugs.threshold>Low</findbugs.threshold>
     </properties>
-    <name>${extension.name} API v.${spec.version}</name>
+    <name>${extension.name} API</name>
     <description>Project GlassFish Enterprise JavaBean API</description>
     
     <url>http://ejb-spec.java.net</url>
