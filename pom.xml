@@ -51,7 +51,7 @@
 
     <groupId>javax.ejb</groupId>
     <artifactId>javax.ejb-api</artifactId>
-    <version>3.2-b01</version>
+    <version>3.2-b01-SNAPSHOT</version>
     
     <properties>
         <extension.name>javax.ejb</extension.name>
@@ -102,9 +102,9 @@
         </mailingList>
     </mailingLists>
     <scm>
-        <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/tags/javax.ejb-api-3.2-b01</connection>
-        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/tags/javax.ejb-api-3.2-b01</developerConnection>
-        <url>http://java.net/projects/glassfish/sources/svn/show/tags/javax.ejb-api-3.2-b01</url>
+        <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/api/javaee-api/javax.ejb</connection>
+        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/api/javaee-api/javax.ejb</developerConnection>
+        <url>http://java.net/projects/glassfish/sources/svn/show/trunk/api/javaee-api/javax.ejb</url>
     </scm>
 
     <build>
