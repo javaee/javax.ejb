@@ -63,6 +63,7 @@
         <findbugs.exclude>exclude.xml</findbugs.exclude>
         <findbugs.threshold>Low</findbugs.threshold>
     </properties>
+    
     <name>${extension.name} API</name>
     <description>Project GlassFish Enterprise JavaBean API</description>
     
@@ -140,7 +141,6 @@
                         <Bundle-Description>
                             Java(TM) EJB ${spec.version} API Design Specification
                         </Bundle-Description>
-                        <Bundle-Version>${bundle.version}</Bundle-Version>
                         <Extension-Name>${extension.name}</Extension-Name>
                         <Specification-Version>${spec.version}</Specification-Version>
                         <Specification-Vendor>${vendor.name}</Specification-Vendor>
