@@ -56,7 +56,6 @@
     <properties>
         <extension.name>javax.ejb</extension.name>
         <spec.version>3.2</spec.version>
-        <javax.xml.rpc.version>1.1</javax.xml.rpc.version>
         <bundle.symbolicName>javax.ejb-api</bundle.symbolicName>         
         <vendor.name>Oracle Corporation</vendor.name>
         <implementation.vendor.id>org.glassfish</implementation.vendor.id>
@@ -117,12 +116,6 @@
                     <include>**/*.html</include>
                 </includes>
             </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>META-INF/README</exclude>
-                </excludes>
-            </resource>
         </resources>        
         <plugins>
             <plugin>
@@ -171,9 +164,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <archive>
-                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
+                    <useDefaultManifestFile>true</useDefaultManifestFile>
                     <excludes>
                         <exclude>**/*.java</exclude>
                     </excludes>
