@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -45,6 +45,8 @@ package javax.ejb;
  * object or EJB local object cannot be created because an object with the
  * same key already exists.  This exception is thrown by the create
  * methods defined in an entity bean's home or local home interface.
+ *
+ * <p><b>Note:</b> Support for entity beans is optional as of EJB 3.2 
  *
  * @since EJB 1.0
  */

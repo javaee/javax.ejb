@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 2006-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2006-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -107,6 +107,8 @@ public interface SessionContext extends EJBContext
      * <p> An instance of a stateless session bean can call this method
      * from any business method invoked through its web service
      * endpoint interface.
+     *
+     * <p><b>Note:</b> Support for web services invocations using JAX-RPC is optional as of EJB 3.2
      *
      * @return The MessageContext for this web service invocation.
      *

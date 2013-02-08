@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -52,6 +52,8 @@ import java.rmi.RemoteException;
  * Applications written to the EJB 3.0 and later APIs should use the facilities
  * of the Java Persistence API (<code>javax.persistence</code>) to model
  * persistent entities.
+ *
+ * <p><b>Note:</b> Support for entity beans is optional as of EJB 3.2.
  *
  * @since EJB 1.0
  */

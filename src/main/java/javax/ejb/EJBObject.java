@@ -1,7 +1,7 @@
 /*
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Copyright (c) 1997-2010 Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 1997-2013 Oracle and/or its affiliates. All rights reserved.
  *
  * The contents of this file are subject to the terms of either the GNU
  * General Public License Version 2 only ("GPL") or the Common Development
@@ -80,6 +80,8 @@ public interface EJBObject extends java.rmi.Remote {
      *
      * <p> This method can be called on an entity bean. An attempt to invoke
      * this method on a session bean will result in RemoteException.
+     *
+     * <p><b>Note:</b> Support for entity beans is optional as of EJB 3.2.
      *
      * @return The EJB object's primary key.
      *
