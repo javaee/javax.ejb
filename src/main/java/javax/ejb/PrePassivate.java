@@ -51,9 +51,11 @@ import java.lang.annotation.Retention;
  * bean is passivated.
  * <p>
   * If the method to which this annotation is applied is defined on an interceptor
- * class, it must have the following signature:
+ * class, it must have one of the following signatures:
  * <pre>
  * void &#060;METHOD&#062;(InvocationContext)
+ *
+ * Object &#060;METHOD&#062;(InvocationContext) throws Exception
  * </pre>
  * <p>
  * If the method to which this annotation is applied is defined on a target class,
