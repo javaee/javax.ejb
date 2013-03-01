@@ -69,15 +69,16 @@ public @interface Remote {
     /**
      * Specifies the remote business interface(s) of the bean.  The <code>value</code>
      * element is specified only when the annotation is applied to the bean class. 
-     * It is required to be specified if any of the following is true:
+     * It is only required to be specified if any of the following is true:
      * <ul>
      * <li>the bean class does not implement its remote business interface
-     * <li>any of the implemented interfaces is designated as a local interface
-     * <li>some of the implemented interfaces are designated
-     * as local business interfaces using <code>Remote</code> annotation on the interface,
-     * while others (excluding <code>java.io.Serializable</code>,
+     * <li>at least one of the implemented interfaces is designated as a local interface
+     * <li>the bean class implements two or more interfaces and at
+     * least one of the implemented interfaces is designated
+     * as a remote business interface using <code>Remote</code> annotation on the interface,
+     * and at least one other interface (excluding <code>java.io.Serializable</code>,
      * <code>java.io.Externalizable</code>, and any of the interfaces
-     * defined by the <code>javax.ejb</code> package) are not designated as such.
+     * defined by the <code>javax.ejb</code> package) has no designation.
      * </ul>
      */
     Class[] value() default {};
