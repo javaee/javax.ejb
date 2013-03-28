@@ -285,7 +285,7 @@
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
-            <version>1.2-b01</version>
+            <version>1.2-b03</version>
         </dependency>
     </dependencies>
 </project>
