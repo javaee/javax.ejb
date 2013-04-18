@@ -55,10 +55,10 @@
     
     <properties>
         <extension.name>javax.ejb</extension.name>
+        <old.spec.version>3.1</old.spec.version>
         <spec.version>3.2</spec.version>
-        <bundle.symbolicName>javax.ejb-api</bundle.symbolicName>         
-        <vendor.name>Oracle Corporation</vendor.name>
-        <implementation.vendor.id>org.glassfish</implementation.vendor.id>
+        <non.final>true</non.final>
+        <spec.build>03</spec.build>         
         <findbugs.version>2.3.1</findbugs.version>
         <findbugs.exclude>exclude.xml</findbugs.exclude>
         <findbugs.threshold>Low</findbugs.threshold>
@@ -129,6 +129,30 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.glassfish.build</groupId>
+                <artifactId>spec-version-maven-plugin</artifactId>
+                <version>1.2</version>
+                <configuration>
+                    <spec>
+                        <nonFinal>${non.final}</nonFinal>
+                        <jarType>api</jarType>
+                        <specVersion>${old.spec.version}</specVersion>
+                        <newSpecVersion>${spec.version}</newSpecVersion>
+                        <specImplVersion>${project.version}</specImplVersion>
+                        <specBuild>${spec.build}</specBuild>
+                        <apiPackage>${extension.name}</apiPackage>
+                    </spec>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>set-spec-properties</goal>
+                            <goal>check-module</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>            
+            <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
                 <version>1.4.3</version>
@@ -137,16 +161,17 @@
                         <supportedProjectType>jar</supportedProjectType>
                     </supportedProjectTypes>
                     <instructions>
-                        <Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
+                        <Bundle-Version>${spec.bundle.version}</Bundle-Version>
+                        <Bundle-SymbolicName>${spec.bundle.symbolic-name}</Bundle-SymbolicName>
+                        <Extension-Name>${spec.extension.name}</Extension-Name>
+                        <Implementation-Version>${spec.implementation.version}</Implementation-Version>
+                        <Specification-Version>${spec.specification.version}</Specification-Version> 
                         <Bundle-Description>
                             Java(TM) EJB ${spec.version} API Design Specification
                         </Bundle-Description>
-                        <Extension-Name>${extension.name}</Extension-Name>
-                        <Specification-Version>${spec.version}</Specification-Version>
-                        <Specification-Vendor>${vendor.name}</Specification-Vendor>
-                        <Implementation-Version>${project.version}</Implementation-Version>
+                        <Specification-Vendor>Oracle Corporation</Specification-Vendor>
                         <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
-                        <Implementation-Vendor-Id>${implementation.vendor.id}</Implementation-Vendor-Id>
+                        <Implementation-Vendor-Id>org.glassfish</Implementation-Vendor-Id>
                     </instructions>
                 </configuration>
                 <executions>
