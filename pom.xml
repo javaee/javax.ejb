@@ -151,7 +151,27 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>            
+            </plugin>
+            <plugin>
+                <groupId>org.glassfish.build</groupId>
+                <artifactId>glassfishbuild-maven-plugin</artifactId>
+                <version>3.2.20</version>
+                <executions>
+                    <execution>
+                        <id>unpack-sources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>unpack-sources</goal>
+                        </goals>
+                        <configuration>
+                            <attachSources>true</attachSources>
+                            <includeArtifactIds>javax.xml.rpc-api</includeArtifactIds>
+                            <includes>javax/xml/rpc/handler/*</includes>
+                            <excludeTransitive>true</excludeTransitive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
@@ -172,6 +192,7 @@
                         <Specification-Vendor>Oracle Corporation</Specification-Vendor>
                         <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
                         <Implementation-Vendor-Id>org.glassfish</Implementation-Vendor-Id>
+			<_include>-${basedir}/osgi.bundle</_include>
                     </instructions>
                 </configuration>
                 <executions>
@@ -306,6 +327,7 @@
             <groupId>javax.xml.rpc</groupId>
             <artifactId>javax.xml.rpc-api</artifactId>
             <version>1.1</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>javax.transaction</groupId>
