@@ -51,7 +51,7 @@
 
     <groupId>javax.ejb</groupId>
     <artifactId>javax.ejb-api</artifactId>
-    <version>3.3-SNAPSHOT</version>
+    <version>3.2-SNAPSHOT</version>
     
     <properties>
         <extension.name>javax.ejb</extension.name>
@@ -188,6 +188,7 @@
                         <Specification-Vendor>Oracle Corporation</Specification-Vendor>
                         <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
                         <Implementation-Vendor-Id>org.glassfish</Implementation-Vendor-Id>
+                        <Import-Package>javax.transaction.*;version="[1.2,1.3)",*</Import-Package>
 			<_include>-${basedir}/osgi.bundle</_include>
                     </instructions>
                 </configuration>
@@ -328,7 +329,7 @@
         <dependency>
             <groupId>javax.transaction</groupId>
             <artifactId>javax.transaction-api</artifactId>
-            <version>1.2-b03</version>
+            <version>1.2</version>
         </dependency>
     </dependencies>
 </project>
