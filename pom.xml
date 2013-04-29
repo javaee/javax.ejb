@@ -51,14 +51,12 @@
 
     <groupId>javax.ejb</groupId>
     <artifactId>javax.ejb-api</artifactId>
-    <version>3.2-b04-SNAPSHOT</version>
+    <version>3.2-SNAPSHOT</version>
     
     <properties>
         <extension.name>javax.ejb</extension.name>
-        <old.spec.version>3.1</old.spec.version>
         <spec.version>3.2</spec.version>
-        <non.final>true</non.final>
-        <spec.build>03</spec.build>         
+        <non.final>false</non.final>
         <findbugs.version>2.3.1</findbugs.version>
         <findbugs.exclude>exclude.xml</findbugs.exclude>
         <findbugs.threshold>Low</findbugs.threshold>
@@ -136,10 +134,8 @@
                     <spec>
                         <nonFinal>${non.final}</nonFinal>
                         <jarType>api</jarType>
-                        <specVersion>${old.spec.version}</specVersion>
-                        <newSpecVersion>${spec.version}</newSpecVersion>
+                        <specVersion>${spec.version}</specVersion>
                         <specImplVersion>${project.version}</specImplVersion>
-                        <specBuild>${spec.build}</specBuild>
                         <apiPackage>${extension.name}</apiPackage>
                     </spec>
                 </configuration>
