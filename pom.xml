@@ -65,7 +65,7 @@
     <name>${extension.name} API</name>
     <description>Project GlassFish Enterprise JavaBean API</description>
     
-    <url>http://ejb-spec.java.net</url>
+    <url>https://github.com/javaee/javax.ejb</url>
 
     <developers>
         <developer>
@@ -79,31 +79,25 @@
     </developers>
 
     <organization>
-        <name>GlassFish Community</name>
-        <url>https://glassfish.java.net</url>
+        <name>Oracle Corporation</name>
+        <url>http://www.oracle.com</url>
     </organization>
     <licenses>
         <license>
             <name>CDDL + GPLv2 with classpath exception</name>
-            <url>https://glassfish.dev.java.net/nonav/public/CDDL+GPL.html</url>
+            <url>https://oss.oracle.com/licenses/CDDL+GPL-1.1</url>
             <distribution>repo</distribution>
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
     <issueManagement>
         <system>jira</system>
-        <url>http://java.net/jira/browse/EJB_SPEC</url>
+        <url>https://github.com/javaee/javax.ejb/issues</url>
     </issueManagement>
-    <mailingLists>
-        <mailingList>
-            <name>EJB Developer</name>
-            <archive>users@ejb-spec.java.net</archive>
-        </mailingList>
-    </mailingLists>
     <scm>
-        <connection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/api/javaee-api/javax.ejb</connection>
-        <developerConnection>scm:svn:https://svn.java.net/svn/glassfish~svn/trunk/api/javaee-api/javax.ejb</developerConnection>
-        <url>http://java.net/projects/glassfish/sources/svn/show/trunk/api/javaee-api/javax.ejb</url>
+        <connection>scm:git:git://github.com/javaee/javax.ejb.git</connection>
+        <developerConnection>scm:git:git://github.com/javaee/javax.ejb.git</developerConnection>
+        <url>https://github.com/javaee/javax.ejb</url>
     </scm>
 
     <build>
