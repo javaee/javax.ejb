@@ -1,17 +1,23 @@
-Javax.ejb
+# JAVAX.EJB
 
-https://github.com/javaee/javax.ejb
+This is the repository for javax.ejb api.
 
-Repository for javax.ejb api
-
-Building
+## Build
 
 Prerequisites:
-
-JDK7
+JDK 7
 Maven < 3.1.1
 
-Run the full build:
+Use the following command:
+```bash 
+mvn clean install
+```
 
-mvn install
+## Licensing
+
+- [CDDL + GPLv2 with classpath exception](https://oss.oracle.com/licenses/CDDL+GPL-1.1)
+
+## Links
+
+- Official web site: https://github.com/javaee/javax.ejb
 
