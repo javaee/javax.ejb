@@ -1,4 +1,4 @@
-# JAVAX.EJB
+# javax.ejb
 
 This is the repository for javax.ejb api.
 
