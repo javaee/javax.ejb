@@ -95,8 +95,8 @@
         <url>https://github.com/javaee/javax.ejb/issues</url>
     </issueManagement>
     <scm>
-        <connection>scm:git:git://github.com/javaee/javax.ejb.git</connection>
-        <developerConnection>scm:git:git://github.com/javaee/javax.ejb.git</developerConnection>
+        <connection>scm:git:https://github.com/javaee/javax.ejb.git</connection>
+        <developerConnection>scm:git:git@github.com/javaee/javax.ejb.git</developerConnection>
         <url>https://github.com/javaee/javax.ejb</url>
     </scm>
 
