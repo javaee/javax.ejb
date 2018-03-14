@@ -51,7 +51,7 @@
 
     <groupId>javax.ejb</groupId>
     <artifactId>javax.ejb-api</artifactId>
-    <version>3.2.1-SNAPSHOT</version>
+    <version>3.2.1</version>
     
     <properties>
         <extension.name>javax.ejb</extension.name>
