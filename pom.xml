@@ -51,7 +51,7 @@
 
     <groupId>javax.ejb</groupId>
     <artifactId>javax.ejb-api</artifactId>
-    <version>3.2.2</version>
+    <version>3.2.3-SNAPSHOT</version>
     
     <properties>
         <extension.name>javax.ejb</extension.name>
@@ -98,7 +98,7 @@
         <connection>scm:git:https://github.com/javaee/javax.ejb.git</connection>
         <developerConnection>scm:git:git@github.com:javaee/javax.ejb.git</developerConnection>
         <url>https://github.com/javaee/javax.ejb</url>
-      <tag>3.2.2</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <build>
